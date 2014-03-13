@@ -1,3 +1,3 @@
-import play
+import utils
 
-play.play("Get Lucky")
+utils.play("Get Lucky")

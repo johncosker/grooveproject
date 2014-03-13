@@ -9,11 +9,11 @@ from __future__ import print_function
 
 import subprocess
 import argparse
-import play
+import utils
 
 
 parser = argparse.ArgumentParser(description='Play a song.')
 parser.add_argument('songName')
 args = parser.parse_args()
 
-play.play(args.songName)
+utils.play(args.songName)
