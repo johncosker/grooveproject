@@ -1,3 +1,3 @@
 import play
 
-play.playCall("Get Lucky")
+play.play("Get Lucky")
