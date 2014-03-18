@@ -8,11 +8,11 @@ from __future__ import print_function
 
 import subprocess
 import argparse
-
+import vlc
 from grooveshark import Client
 
 # param: gen, a generator created by grooveshark Client search(), contains multiple songs
-def play(songName):
+def play(songName, player):
 	client = Client()
 	client.init()
 	songs = client.search(songName, type='Songs')
@@ -21,11 +21,17 @@ def play(songName):
 		song = songs.next()
 		artist = song.artist
 		try:
-			print('\033[92m' + song.name + " - " + artist.name + " [" + song.duration + "]" + '\033[0m')
+			print('\033[92m' + song.name + " - " + artist.name +  '\033[0m')
 #print(song)
-			subprocess.call(["cvlc","-q", "-I", "rc", song.stream.url]) 
+			player.set_mrl(song.stream.url)
+			player.play()
 			noError = True
 		except TypeError:
 			print("Song Error")
 			noError = False
 	return
+def printList(mlist):
+	i = 0
+	for m in mlist:
+		print(mlist.item_at_index(i).get_meta(vlc.Meta.Title))
+		i=i+1
