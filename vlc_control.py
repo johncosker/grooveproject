@@ -10,6 +10,8 @@ class vlc_controller:
 		self.mlp = self.instance.media_list_player_new()
 		self.mlp.set_media_player(self.player)
 		self.mlp.set_media_list(self.mlist)
+		self.em = self.player.event_manager()
+		self.em.event_attach(vlc.EventType.MediaPlayerEndReached, self.songFinished)
 	def getPlayer(self):
 		return self.player
 	def getList(self):
@@ -19,11 +21,14 @@ class vlc_controller:
 	def getInstance(self):
 		return self.instance
 	def addSong(self, song):
-		media = self.instance.media_new(song.stream.url)
-		media.set_meta(vlc.Meta.Title, song.name)
-		media.set_meta(vlc.Meta.Artist, song.artist.name)
-		self.mlist.add_media(media)
-		print('\033[92m' + song.name + " - " + song.artist.name + '\033[0m' + " was added to the list")
+		try:
+			media = self.instance.media_new(song.stream.url)
+			media.set_meta(vlc.Meta.Title, song.name)
+			media.set_meta(vlc.Meta.Artist, song.artist.name)
+			self.mlist.add_media(media)
+			print('\033[92m' + song.name + " - " + song.artist.name + '\033[0m' + " was added to the list")
+		except Exception:
+			pass
 	def play(self):           
 		self.mlp.play()
 	def pause(self):
@@ -40,4 +45,5 @@ class vlc_controller:
 				print('\033[92m' + media.get_meta(vlc.Meta.Title) + " - " + media.get_meta(vlc.Meta.Artist) + '\033[0m' )
 			else:
 				print (media.get_meta(vlc.Meta.Title) + " - " + media.get_meta(vlc.Meta.Artist))
-
+	def songFinished(self, data):
+		pass

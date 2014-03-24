@@ -22,3 +22,6 @@ class groove_controller:
 				return song
 			else:
 				song = songs.next()
+	def getAll(self, songName):
+		art = self.client.search(songName, Client.ARTISTS)
+		return art.next().songs
