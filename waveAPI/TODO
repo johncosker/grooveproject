@@ -1,0 +1,42 @@
+TODO:
+
+-Draw out sys actitechure on white board
+    -
+    -make more notebook entries
+
+-Connect web page to running media thread
+    -TODO FILES:
+        -parseCmd.py
+        -grooveshark.js (rename pls)
+        -index.html (rename pls)
+
+-SQLite setup
+
+-Media Player program
+    -Try not to relie on vlc api
+        -check on how portable vlc api is
+
+
+
+
+FEATURE LIST:
+
+-Allow limited input from users
+    -This can be enabled/disbled from the admin user
+    -Allows users to only add x songs per song played
+    -Add to playlist quere 
+        -lets the user select lots of songs to add at once
+        -will get added to the main playlist if main playlist is empty, or after x songs have played
+    -this will allow all users to add songs, stopping one user from adding a days worth of songs to the playlist at once
+    -On playlist screen have users quered songs grayed out saying the will be added after a few songs have been played
+    
+    
+-Play video
+    -Allow users to play video from youtube
+    -this will be added to the query as normal
+    -requiers screen
+    
+
+-Agent/Servers
+    -Allow many devices to become an agent/server
+        -this will allow easier us of the server if pc,mac,andriod,and ios can call become an acting server
