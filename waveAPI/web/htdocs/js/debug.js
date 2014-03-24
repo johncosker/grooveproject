@@ -8,7 +8,16 @@ $(document).ready(function() {
                'info': ''}
         processCommand(cmd, this)
     })
-    
+
+    //PLAY Popular
+    $('#popular').on('click', function() {
+        cmd = {'cmd': 'play',
+               'user': 'admin',
+               'target': 'player',
+               'info': ''}
+        processCommand(cmd, this)
+    })
+
     //PAUSE
     $('#pause').on('click', function() {
         cmd = {'cmd': 'pause',
@@ -17,7 +26,7 @@ $(document).ready(function() {
                'info': ''}
         processCommand(cmd, this)
     })
-    
+
     //SKIP
     $('#skip').on('click', function() {
         cmd = {'cmd': 'skip',
@@ -44,6 +53,12 @@ $(document).ready(function() {
                'info': ''}
         processCommand(cmd, this)
     })
+    
+    //Seach cmds
+    //search
+    $('#searchBox').on('click', function() {
+        alert('hi')
+    })
 })
 
 function processCommand(cmd, buttonId) {
@@ -56,30 +71,3 @@ function processCommand(cmd, buttonId) {
             }
         })
 }
-
-/*
-
-function processNextSnapshot( image ) {
-    if (image.length != 1){
-        do {
-            image.shift(0,1);
-        }
-        while ( $(image[0]).attr('src') != '/static_media/img/branding/snapshot_19px.png' );
-        if ( image.length > 1 ){
-            setTimeout( function () {snapshotOver(image)}, 500 );
-        }
-    }
-}
-
-$.ajax({
-        url: url,
-        type: 'POST',
-        async: true,
-        cache: false,
-        data: {},
-        success: function(data){},
-        error: function(){},
-        complete: function(){}
-    });
-
-*/

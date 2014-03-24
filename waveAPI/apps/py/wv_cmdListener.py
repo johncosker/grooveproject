@@ -11,6 +11,7 @@ import time
 from multiprocessing import Queue
 from multiprocessing import Process
 from ast import literal_eval
+from groove_control import groove_controller
 
 # Write PID file of the daemon
 def writePid():
@@ -55,7 +56,7 @@ def startSqlWorker(q):
 
 # Main process loop
 def main(listener, player_q, slq_q):
-
+    seach = groove_controller()
     while True:
         cmdMsg = listener.recv(10240)
         logging.info(cmdMsg)
@@ -64,6 +65,8 @@ def main(listener, player_q, slq_q):
         logging.info(parsedCmdMsg)
         if parsedCmdMsg['target'] == 'player':
             player_q.put(parsedCmdMsg)
+        elif parsedCmdMsg['target'] == 'search':
+            seach.getAll(parsedCmdMsg['info'])
 
 # __init__
 if __name__ == "__main__":
