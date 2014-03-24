@@ -22,7 +22,7 @@ def writePid():
 def listenerStart():
     
     logging.basicConfig(filename='/var/log/python.log',
-                        format='CMD - %(message)s',
+                        format='Wave Player - %(message)s',
                         level=logging.DEBUG)
 
     sock = socket.socket(socket.AF_INET,
@@ -52,33 +52,7 @@ def startPlayerWorker(q):
 # Starts SQLite instance that recieves commands from Queue (slq_q)
 def startSqlWorker(q):
     tmp = 1
-    """
-    worker = Process(target=wavePlayer, args = (q,))
-    worker.daemon = True
-    worker.start()
-    """
 
-#call correct functions on running player thread
-def play():
-    print "play"
-    #conn.send('close')
-
-def pause():
-    print "pause"
-    #conn.send('close')
-    
-def skip():
-    print "skip"
-    #conn.send('close')
-
-def upSong():
-    print "upSong"
-    #conn.send('close')
-
-def downSong():
-    print "downSong"
-    #conn.send('close')
-    
 # Main process loop
 def main(listener, player_q, slq_q):
 
@@ -101,7 +75,6 @@ if __name__ == "__main__":
     startSqlWorker(slq_q)
     main(listener, player_q, slq_q)
 
-
 """
 #TODO:
 -Replace all prints
@@ -123,113 +96,5 @@ if __name__ == "__main__":
     -prepair these to json
     -maybe include a quick update that only includes changed data in the db
         -votes/order
-        -have the agent use this info to rearange the dataTable
-
-import json
-import cgi
-import socket
-import struct
-
-from time import sleep
-from multiprocessing.connection import Client
-from array import array
-
-print ("Content-Type: text/html")     # HTML is following
-print ("")                            # blank line, end of headers
-
-def connMediaPlayer():
-    # Ping server / On fail spawn a server process
-    # conn.send('close')
-    # can also send arbitrary objects:
-    # conn.send(['a', 2.5, None, int, sum])
-    # conn.close()
-    address = ('localhost', 31415)
-    try:
-        conn = Client(address, authkey='wavePi')
-        conn.send('alive')
-        while True:
-            msg = conn.recv()
-            # do something with msg
-            if msg == True:
-                break
-
-    except:
-        tmp = 1
-        #conn timed outs
-        #process not running, create one and try again
-        #subprocess call to start player
-        #sleep(2) # allow time for player to start
-        #connMediaPlayer() or but all in a for x in range(0,5) loop to allow for max conn attempts
-
-def runCmd(msg):
-    cmd = msg.getvalue("cmd", False)
-    user = msg.getvalue("user", False)
-    info = msg.getvalue("info", False)
-    
-    # Check for blank fields
-    if cmd and user:
-    
-        # ADMIN COMMANDS
-        if user == 'admin':
-            if cmd == 'play':
-                play()
-        
-            elif cmd == 'pause':
-                pause()
-        
-            elif cmd == 'skip':
-                skip()
-        # OTHER CMDS
-        if cmd == 'upSong':
-            upSong()
-        
-        elif cmd == 'downSong':
-            downSong()
-    else:
-        print "Wrong command input"
-
-#call correct functions on running player thread
-def play():
-    print "play"
-    #conn.send('close')
-
-def pause():
-    print "pause"
-    #conn.send('close')
-    
-def skip():
-    print "skip"
-    #conn.send('close')
-
-def upSong():
-    print "upSong"
-    #conn.send('close')
-
-def downSong():
-    print "downSong"
-    #conn.send('close')
-
-
-runCmd(cgi.FieldStorage())
-
-
-
-    def manual_getAvailableDevice( request ):
-    returnData = { "cams": [] }
-    if request.method == 'POST':
-        nvrconfigDb = libinputconfig_py.CVeApiNVRConfigDatabase(True)
-        securityGroup = int( request.POST.get('securityGroup') )
-        findList =  simplejson.loads( request.POST.get('list') )
-        ipList = libutils_py.StringVec()
-        for item in findList:
-            ipList.append(str(item))
-
-        req = nvrconfigDb.getManualDiscoveredDeviceList( ipList, securityGroup )
-        for device in req:
-            mac_addr = ':'.join([device.m_sMacAddress[i:i+2] for i in range(0, len(device.m_sMacAddress), 2)])
-            returnData['cams'].append( discCam )
-
-    json = simplejson.dumps ( returnData )
-    return HttpResponse( json, mimetype="application/json" )
-    
+        -have the agent use this info to rearange the dataTable    
 """

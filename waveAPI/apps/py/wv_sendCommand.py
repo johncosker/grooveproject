@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#TODO:
+"""
+Add response from server to return confirmation
+"""
 import json
 import cgi
 import socket
@@ -38,4 +42,5 @@ sock = socket.socket(socket.AF_INET, # Internet
 sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
 sock.sendto(msgToSend, (UDP_IP, UDP_PORT))
 
-print "END"
+
+print "Command Sent"
