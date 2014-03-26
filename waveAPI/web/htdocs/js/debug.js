@@ -59,6 +59,14 @@ $(document).ready(function() {
     $('#searchBox').on('click', function() {
         alert('hi')
     })
+
+    $('#cmdBtn').on('click', function() {
+        cmd = {'cmd': $('#cmdBox').val(),
+               'user': 'admin',
+               'target': 'player',
+               'info' : ''}  
+        processCommand(cmd, this)
+    })
 })
 
 function processCommand(cmd, buttonId) {

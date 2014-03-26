@@ -56,7 +56,7 @@ def startSqlWorker(q):
 
 # Main process loop
 def main(listener, player_q, slq_q):
-    seach = groove_controller()
+    #search = groove_controller()
     while True:
         cmdMsg = listener.recv(10240)
         logging.info(cmdMsg)
@@ -65,8 +65,8 @@ def main(listener, player_q, slq_q):
         logging.info(parsedCmdMsg)
         if parsedCmdMsg['target'] == 'player':
             player_q.put(parsedCmdMsg)
-        elif parsedCmdMsg['target'] == 'search':
-            seach.getAll(parsedCmdMsg['info'])
+        #elif parsedCmdMsg['target'] == 'search':
+        #    search.getAll(parsedCmdMsg['info'])
 
 # __init__
 if __name__ == "__main__":
