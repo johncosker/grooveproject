@@ -101,6 +101,14 @@ $(document).ready(function() {
             }
         })
     })
+
+    $('#cmdBtn').on('click', function() {
+        cmd = {'cmd': $('#cmdBox').val(),
+               'user': 'admin',
+               'target': 'player',
+               'info' : ''}  
+        processCommand(cmd, this)
+    })
 })
 
 function processCommand(cmd, buttonId) {
