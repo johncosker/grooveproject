@@ -85,10 +85,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: 'apps/py/client_search.py',
-            data: {'cmd'   : 'search',
-                   'user'  : 'admin',
-                   'target': 'search',
-                   'info'  : 'Basshunter'},
+            data: {inputData: 'hi'},
             success: function(data) {
                 for (var i = 0; i < data.length; i++) {
                     $('#serachResults').text( $('#serachResults').text() + data[i] )
@@ -100,14 +97,6 @@ $(document).ready(function() {
                 alert(':(')
             }
         })
-    })
-
-    $('#cmdBtn').on('click', function() {
-        cmd = {'cmd': $('#cmdBox').val(),
-               'user': 'admin',
-               'target': 'player',
-               'info' : ''}  
-        processCommand(cmd, this)
     })
 })
 
