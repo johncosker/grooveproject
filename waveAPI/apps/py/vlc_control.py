@@ -1,4 +1,3 @@
-import utils
 import vlc
 from grooveshark import Client
 class vlc_controller:

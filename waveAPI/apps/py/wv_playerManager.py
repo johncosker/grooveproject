@@ -6,7 +6,6 @@ import cgitb; cgitb.enable
 import os
 import time
 import itertools
-import utils
 import vlc
 import logging
 import subprocess
