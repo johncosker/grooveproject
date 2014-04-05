@@ -7,13 +7,14 @@ import json
 import cgi
 import socket
 import sys
+import utils
 
 from time import sleep
 from multiprocessing.connection import Client
 from array import array
 from time import sleep
 
-UDP_IP = "192.168.1.16"
+UDP_IP = utils.get_ip_address('eth0')
 UDP_PORT = 4242
 
 print ("Content-Type: text/html")     # HTML is following

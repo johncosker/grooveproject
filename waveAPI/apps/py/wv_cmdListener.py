@@ -34,7 +34,7 @@ def listenerStart():
                     socket.SO_REUSEADDR,
                     1)
                     
-    sock.bind(('', 4242))
+    sock.bind(('192.168.1.115', 4242))
     # wrong: mreq = struct.pack("sl", socket.inet_aton("224.51.105.104"), socket.INADDR_ANY)
     mreq = struct.pack("=4sl",
                        socket.inet_aton("224.51.105.104"),
@@ -58,7 +58,7 @@ def startSqlWorker(q):
 def main(listener, player_q, slq_q):
     #search = groove_controller()
     while True:
-        cmdMsg = listener.recv(10240)
+        cmdMsg = listener.recv(1024)
         logging.info(cmdMsg)
         parsedCmdMsg = literal_eval(cmdMsg)
         # unpack json object
