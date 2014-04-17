@@ -21,6 +21,7 @@ class groove_controller:
         song = songs.next()
         while True:
             if self.checkSong(song):
+                print("Found: " + '\033[92m' + song.name + " - " + song.artist.name + '\033[0m')
                 return song
             else:
                 song = songs.next()
