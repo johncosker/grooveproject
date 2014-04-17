@@ -1,13 +1,9 @@
 #!/usr/bin/env python
-#TODO:
-"""
-Add response from server to return confirmation
-"""
 import json
 import cgi
 import socket
 import sys
-
+import logging
 from time import sleep
 from multiprocessing.connection import Client
 from array import array
@@ -25,13 +21,15 @@ def parseCmd(msg):
     else:
         msg = msg[1:-1]
     return msg
-    
+
 cmdRequest = cgi.FieldStorage()
 
 cmd = parseCmd( str(cmdRequest.getlist('cmd')) )
 user = parseCmd( str(cmdRequest.getlist('user')) )
 target = parseCmd( str(cmdRequest.getlist('target')) )
 info = parseCmd( str(cmdRequest.getlist('info')) )
+#info += parseCmd( str(cmdRequest.getlist('info')) )
+#info = cmdRequest.getlist('info')
 
 msgToSend = "{'cmd':%s, 'user':%s, 'target':%s, 'info':%s}" % ( cmd, user, target, info )
 

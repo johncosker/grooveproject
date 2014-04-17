@@ -5,7 +5,7 @@ TODO:
     -start with a input box and add button
     -update:
         -dataTable showing all results
-        -allow user to select multiply 
+        -allow user to select one song 
 
 -->
 <!DOCTYPE html>
@@ -45,29 +45,16 @@ TODO:
 
         <br><br>
         <div id='search'>Search Controls</div>
-        <input type='text' name='searhBox'></input>
+        <input type='text' id='searchText' name='searhBox'></input>
         <input id='searchBox' type="submit" value="Search">
+        <input id='AddSelectedSong' type="submit" value="Add Selected Song">
         <div id='search'>Search Results</div>
-        <table style="width:500px">
+        <table id='searchContent'style="width:800px">
             <tr>
+                <th><input type='checkbox' name='songAdd'></th>
                 <th>Song</th>
                 <th>Artist</th>		
                 <th>Album</th>
-            </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>		
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>Eve</td>
-                <td>Jackson</td>		
-                <td>94</td>
-            </tr>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>		
-                <td>80</td>
             </tr>
         </table>
         <div id='serachResults'></div>

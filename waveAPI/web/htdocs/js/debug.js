@@ -76,31 +76,63 @@ $(document).ready(function() {
                'user'  : 'admin',
                'target': 'player',
                'info'  : ''}
-        processCommand(cmd, this)
+        alert (cmd['cmd'])
+        //processCommand(cmd, this)
     })
     
     //Seach cmds
     //search
     $('#searchBox').on('click', function() {
+        enableDisableButton( $(this ) )
         $.ajax({
             type: 'POST',
             url: 'apps/py/client_search.py',
-            data: {inputData: 'hi'},
+            data: {'cmd'   : 'search',
+                   'user'  : 'admin',
+                   'target': 'search',
+                   'info'  : $('#searchText').val()},
             success: function(data) {
+                htmlStr = "<table style='width:800px'><tr><th></th><th>Song</th><th>Artist</th><th>Album</th></tr>"
                 for (var i = 0; i < data.length; i++) {
-                    $('#serachResults').text( $('#serachResults').text() + data[i] )
+                    htmlStr += "<tr stream= " + data[i]['stream'] +" >" +
+                               "<th><input type='checkbox' name='songAdd'></th>" +
+                               "<th class='song'>" + data[i]['song']   + "</th>" +
+                               "<th class='artist'>" + data[i]['artist'] + "</th>" +
+                               "<th class='album'>" + data[i]['album']  + "</th></tr>"
                 }
-               
-                alert(data)
+                htmlStr += "</table>"
+                $('#searchContent').html(htmlStr)
+            },
+            complete: function() {
+                enableDisableButton( $('#searchBox') )
+
             },
             error: function() {
                 alert(':(')
             }
         })
     })
+    //Add selected song
+    $('#AddSelectedSong').on('click', function() {
+        sendData = ''
+        $('input:checkbox[name=songAdd]:checked').each(function () {
+            row = $(this).closest('tr')
+            sendData +="'song':'" + $(row).find('.song').text() + "'," +
+                             "'album':" + $(row).find('.album').text() + "'," +
+                             "'artist':" + $(row).find('.artist').text() + "'," +
+                             "'stream':" + $(row).attr('stream') + "'"
+        });
+        cmd = {'cmd'   : 'addSongs',
+               'user'  : 'admin',
+               'target': 'dataBase',
+               'info'  : sendData
+              }
+        processCommand(cmd, this)
+    })
 })
 
 function processCommand(cmd, buttonId) {
+    enableDisableButton( $(buttonId) )
    $.ajax({
             type: 'POST',
             url: 'apps/py/wv_sendCommand.py',
@@ -108,8 +140,21 @@ function processCommand(cmd, buttonId) {
             success: function(data) {
                 
             },
+            complete: function() {
+                enableDisableButton( $(buttonId) )
+            },
             error: function() {
                 alert(':(')
             }
         })
+}
+
+function enableDisableButton(button) {
+    if ($(button).attr("disabled") == 'disabled') {
+        $(button).attr("disabled", false)
+
+    }
+    else {
+        $(button).attr("disabled", true)
+    }
 }

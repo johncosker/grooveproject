@@ -1,32 +1,38 @@
 #!/usr/bin/python
-import httplib2
-import os
 
-print ("Content-Type: html/text")     # HTML is following
-print ("")                            # blank line, end of headers
+import cgi
+import cgitb; cgitb.enable()  # for troubleshooting
+from grooveshark import Client
+import json
 
-class AjaxCall(webapp.RequestHandler):
-    def get(self):
-        template_data = {}
-        template_path = 'ajaxTest.html'
-        self.response.out.write(template.render(template_path,template_data))
+print "Content-type: application/json"
+print 
 
-class ProcessAjax(webapp.RequestHandler):
-    def get(self):
-        inputdata = self.request.get("inputData")
-        self.response.out.write(inputdata)
+client = Client()
+client.init()
 
+def parseCmd(msg):
+    if len(msg) < 3:
+        msg = ""
+    else:
+        msg = msg[2:-2]
+    return msg
 
-application = webapp.WSGIApplication(
-                                     [('/processAjax',ProcessAjax),
-                      ('/ajaxPage',AjaxCall)
-                                    ],
-                                     debug=True)
+cmdRequest = cgi.FieldStorage()
 
-def main():
-    run_wsgi_app(application)
-print "hi0"
-if __name__ == "__main__":
-    print "hi"
-    main()
-    
+cmd = parseCmd( str(cmdRequest.getlist('cmd')) )
+user = parseCmd( str(cmdRequest.getlist('user')) )
+target = parseCmd( str(cmdRequest.getlist('target')) )
+info = parseCmd( str(cmdRequest.getlist('info')) )
+
+foundSongs = client.search(info, type='Songs')
+
+returnData = []
+songCount = 0
+for song in foundSongs:
+    returnData.append({'song' : song.name, 'artist' : song.artist.name, 'album' : song.album.name, 'stream' : song.stream.url})
+    songCount += 1
+    if songCount > 19:
+        break   
+
+print json.dumps(returnData)

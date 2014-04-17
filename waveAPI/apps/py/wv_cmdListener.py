@@ -54,6 +54,9 @@ def startPlayerWorker(q):
 def startSqlWorker(q):
     tmp = 1
 
+def sqliteManager(data):
+    cmd = data['cmd']
+
 # Main process loop
 def main(listener, player_q, slq_q):
     #search = groove_controller()
@@ -65,6 +68,8 @@ def main(listener, player_q, slq_q):
         logging.info(parsedCmdMsg)
         if parsedCmdMsg['target'] == 'player':
             player_q.put(parsedCmdMsg)
+        elif parsedCmdMsg['target'] == 'dataBase':
+            sqliteManager(parsedCmdMsg)
         #elif parsedCmdMsg['target'] == 'search':
         #    search.getAll(parsedCmdMsg['info'])
 
