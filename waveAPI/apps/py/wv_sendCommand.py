@@ -11,8 +11,9 @@ from multiprocessing.connection import Client
 from array import array
 from time import sleep
 
-UDP_IP = utils.get_ip_address('eth0')
-UDP_PORT = 4242
+TCP_IP = utils.get_ip_address('eth0')
+TCP_PORT = 5055
+BUFFER_SIZE = 1024
 
 print ("Content-Type: text/html")     # HTML is following
 print ("")                            # blank line, end of headers
@@ -35,12 +36,10 @@ info = parseCmd( str(cmdRequest.getlist('info')) )
 
 msgToSend = "{'cmd':%s, 'user':%s, 'target':%s, 'info':%s}" % ( cmd, user, target, info )
 
-sock = socket.socket(socket.AF_INET, # Internet
-             socket.SOCK_DGRAM,      # UDP
-             socket.IPPROTO_UDP)     # Multicast recvier
-             
-sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
-sock.sendto(msgToSend, (UDP_IP, UDP_PORT))
+socketInst = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+socketInst.connect((TCP_IP, TCP_PORT))
+socketInst.send(msgToSend)
+data = socketInst.recv(BUFFER_SIZE)
+socketInst.close()
 
-
-print "Command Sent"
+print data

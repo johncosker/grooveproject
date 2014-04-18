@@ -7,11 +7,16 @@ import os
 import json
 import wv_playerManager
 import time
+import utils
 
 from multiprocessing import Queue
 from multiprocessing import Process
 from ast import literal_eval
 from groove_control import groove_controller
+
+TCP_IP = utils.get_ip_address('eth0')
+TCP_PORT = 5055
+BUFFER_SIZE = 1024
 
 # Write PID file of the daemon
 def writePid():
@@ -21,27 +26,11 @@ def writePid():
 
 # Configures the UDP listener to exept cmds
 def listenerStart():
-    
-    logging.basicConfig(filename='/var/log/python.log',
-                        format='Wave Player - %(message)s',
-                        level=logging.DEBUG)
-
-    sock = socket.socket(socket.AF_INET,
-                         socket.SOCK_DGRAM,
-                         socket.IPPROTO_UDP)
-                         
-    sock.setsockopt(socket.SOL_SOCKET,
-                    socket.SO_REUSEADDR,
-                    1)
-                    
-    sock.bind(('192.168.1.116', 4242))
-    # wrong: mreq = struct.pack("sl", socket.inet_aton("224.51.105.104"), socket.INADDR_ANY)
-    mreq = struct.pack("=4sl",
-                       socket.inet_aton("224.51.105.104"),
-                       socket.INADDR_ANY)
-
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
-    return sock
+    utils.check_for_open_port(TCP_PORT)
+    socketInst = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    socketInst.bind((TCP_IP, TCP_PORT))
+    socketInst.listen(5)
+    return socketInst
 
 # Starts the player instance that recieves commands from Queue (player_q)
 def startPlayerWorker(q):
@@ -61,20 +50,29 @@ def sqliteManager(data):
 def main(listener, player_q, slq_q):
     #search = groove_controller()
     while True:
-        cmdMsg = listener.recv(1024)
-        logging.info(cmdMsg)
-        parsedCmdMsg = literal_eval(cmdMsg)
-        # unpack json object
-        logging.info(parsedCmdMsg)
-        if parsedCmdMsg['target'] == 'player':
-            player_q.put(parsedCmdMsg)
-        elif parsedCmdMsg['target'] == 'dataBase':
-            sqliteManager(parsedCmdMsg)
-        #elif parsedCmdMsg['target'] == 'search':
-        #    search.getAll(parsedCmdMsg['info'])
+        conn, addr = listener.accept()
+        while True:
+            cmdMsg = conn.recv(BUFFER_SIZE)
+            if not cmdMsg:
+                break
+            logging.info(cmdMsg)
+            parsedCmdMsg = literal_eval(cmdMsg)
+            # unpack json object
+            logging.info(parsedCmdMsg)
+            if parsedCmdMsg['target'] == 'player':
+                player_q.put(parsedCmdMsg)
+            elif parsedCmdMsg['target'] == 'dataBase':
+                sqliteManager(parsedCmdMsg)
+            #elif parsedCmdMsg['target'] == 'search':
+            #    search.getAll(parsedCmdMsg['info'])
+
+            conn.send("COMPLETE") # echo tcp
 
 # __init__
 if __name__ == "__main__":
+    logging.basicConfig(filename='/var/log/python.log',
+                        format='Wave Player - %(message)s',
+                        level=logging.DEBUG)
     writePid()
     listener = listenerStart()
     player_q = Queue()
