@@ -66,7 +66,7 @@ def main(listener, player_q, slq_q):
             #elif parsedCmdMsg['target'] == 'search':
             #    search.getAll(parsedCmdMsg['info'])
 
-            conn.send("COMPLETE") # echo tcp
+            conn.send("COMPLETE\r\n") # echo tcp
 
 # __init__
 if __name__ == "__main__":
