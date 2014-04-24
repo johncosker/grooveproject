@@ -22,7 +22,7 @@ def parseCmd(msg):
     if len(msg) < 3:
         msg = "''"
     else:
-        msg = msg[1:-1]
+        msg = msg[2:-2]
     return msg
 
 cmdRequest = cgi.FieldStorage()
@@ -31,14 +31,25 @@ cmd = parseCmd( str(cmdRequest.getlist('cmd')) )
 user = parseCmd( str(cmdRequest.getlist('user')) )
 target = parseCmd( str(cmdRequest.getlist('target')) )
 info = parseCmd( str(cmdRequest.getlist('info')) )
-#info += parseCmd( str(cmdRequest.getlist('info')) )
-#info = cmdRequest.getlist('info')
 
-msgToSend = "{'cmd':%s, 'user':%s, 'target':%s, 'info':%s}" % ( cmd, user, target, info )
+msgToSend = {'cmd' : cmd, 'user' : user, 'target' : target, 'info' : info}
+
+if cmd == 'addSong': 
+    song = parseCmd( str(cmdRequest.getlist('song')) )
+    album = parseCmd( str(cmdRequest.getlist('album')) )
+    artist = parseCmd( str(cmdRequest.getlist('artist')) )
+    stream = parseCmd( str(cmdRequest.getlist('stream')) )
+
+    msgToSend['song'] = song
+    msgToSend['album'] = album
+    msgToSend['artist'] = artist
+    msgToSend['stream'] = stream
+
+send_data = json.dumps(msgToSend)
 
 socketInst = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socketInst.connect((TCP_IP, TCP_PORT))
-socketInst.send(msgToSend)
+socketInst.send(send_data)
 data = socketInst.recv(BUFFER_SIZE)
 socketInst.close()
 

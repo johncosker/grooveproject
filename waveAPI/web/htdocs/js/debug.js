@@ -114,20 +114,19 @@ $(document).ready(function() {
     })
     //Add selected song
     $('#AddSelectedSong').on('click', function() {
-        sendData = ''
         $('input:checkbox[name=songAdd]:checked').each(function () {
             row = $(this).closest('tr')
-            sendData +="'song':'" + $(row).find('.song').text() + "'," +
-                             "'album':" + $(row).find('.album').text() + "'," +
-                             "'artist':" + $(row).find('.artist').text() + "'," +
-                             "'stream':" + $(row).attr('stream') + "'"
+            cmd = {'cmd'   : 'addSong',
+                   'user'  : 'admin',
+                   'target': 'dataBase',
+                   'info'  : '',
+                   'song':   $(row).find('.song').text(),
+                   'album':  $(row).find('.album').text(),
+                   'artist': $(row).find('.artist').text(),
+                   'stream': $(row).attr('stream')
+                  }
+            processCommand(cmd, this)
         });
-        cmd = {'cmd'   : 'addSongs',
-               'user'  : 'admin',
-               'target': 'dataBase',
-               'info'  : sendData
-              }
-        processCommand(cmd, this)
     })
 })
 
