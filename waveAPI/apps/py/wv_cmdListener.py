@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # UDP multicast listener
+import json
 import socket
 import struct
 import logging
@@ -14,6 +15,7 @@ from multiprocessing import Process
 from ast import literal_eval
 from groove_control import groove_controller
 from song_control import songs_controller
+import SocketServer
 
 TCP_IP = utils.get_ip_address('eth0')
 TCP_PORT = 5055
@@ -21,20 +23,28 @@ BUFFER_SIZE = 1024
 
 song_controller = songs_controller(1)
 
+class MyTCPHandler(SocketServer.BaseRequestHandler):
+    def handle(self):
+        self.data = self.request.recv(1024).strip()
+        parsedCmdMsg = json.loads(self.data)
+        logging.info(parsedCmdMsg)
+        if parsedCmdMsg['target'] == 'player':
+            player_q.put(parsedCmdMsg)
+            send_data = "Received"
+        elif parsedCmdMsg['target'] == 'dataBase':
+            sqliteManager(parsedCmdMsg)
+            send_data = "Received"
+        elif parsedCmdMsg['target'] == 'searcher':
+            songs = ["Sofi Needs a Ladder - Deadmau5", "Finale - Madeon", "Icarus - Madeon"]
+            send_data = json.dumps(songs)
+        self.request.send(send_data)
+        self.request.send("\n")
 
 # Write PID file of the daemon
 def writePid():
     pid = str(os.getpid())
     pidfile = "/var/run/wv_interfaceInformer.pid"
     file(pidfile, 'w').write(pid)
-
-# Configures the UDP listener to exept cmds
-def listenerStart():
-    utils.check_for_open_port(TCP_PORT)
-    socketInst = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    socketInst.bind((TCP_IP, TCP_PORT))
-    socketInst.listen(5)
-    return socketInst
 
 # Starts the player instance that recieves commands from Queue (player_q)
 def startPlayerWorker(q):
@@ -56,26 +66,9 @@ def sqliteManager(data):
         tmp = 1
 
 # Main process loop
-def main(listener, player_q, slq_q):
-
-    while True:
-        conn, addr = listener.accept()
-        while True:
-            cmdMsg = conn.recv(BUFFER_SIZE)
-            if not cmdMsg:
-                break
-            logging.info(cmdMsg)
-            parsedCmdMsg = json.loads(cmdMsg)
-            # unpack json object
-            logging.info(parsedCmdMsg)
-            if parsedCmdMsg['target'] == 'player':
-                player_q.put(parsedCmdMsg)
-            elif parsedCmdMsg['target'] == 'dataBase':
-                sqliteManager(parsedCmdMsg)
-            #elif parsedCmdMsg['target'] == 'search':
-            #    search.getAll(parsedCmdMsg['info'])
-
-            conn.send("COMPLETE\r\n") # echo tcp
+def main(player_q, slq_q):
+    server = SocketServer.TCPServer((TCP_IP, TCP_PORT), MyTCPHandler)
+    server.serve_forever()
 
 # __init__
 if __name__ == "__main__":
@@ -83,12 +76,11 @@ if __name__ == "__main__":
                         format='Wave Player - %(message)s',
                         level=logging.DEBUG)
     writePid()
-    listener = listenerStart()
     player_q = Queue()
     slq_q = Queue()
     startPlayerWorker(player_q)
     startSqlWorker(slq_q)
-    main(listener, player_q, slq_q)
+    main(player_q, slq_q)
 
 """
 #TODO:

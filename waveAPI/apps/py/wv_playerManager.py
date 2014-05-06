@@ -10,7 +10,6 @@ import vlc
 import logging
 import subprocess
 
-from grooveshark import Client
 from multiprocessing import Process
 from grooveshark import Client
 from vlc_control import vlc_controller
@@ -45,7 +44,7 @@ class playerManager(object):
         for song in self.client.popular():
             self.vc.addSong(song)
         self.vc.play()
-
+        
     def play(self):
         logging.info("Player: play()")
         self.vc.play()
