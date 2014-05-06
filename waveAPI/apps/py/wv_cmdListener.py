@@ -25,19 +25,24 @@ song_controller = songs_controller(1)
 
 class MyTCPHandler(SocketServer.BaseRequestHandler):
     def handle(self):
+        response = {}
         self.data = self.request.recv(1024).strip()
         parsedCmdMsg = json.loads(self.data)
         logging.info(parsedCmdMsg)
         if parsedCmdMsg['target'] == 'player':
             player_q.put(parsedCmdMsg)
-            send_data = "Received"
+            response['type'] = "Message"
+            response['Message'] = "Received"
         elif parsedCmdMsg['target'] == 'dataBase':
             sqliteManager(parsedCmdMsg)
-            send_data = "Received"
+            response['type'] = "Message"
+            response['Message'] = "Received"
         elif parsedCmdMsg['target'] == 'searcher':
-            songs = ["Sofi Needs a Ladder - Deadmau5", "Finale - Madeon", "Icarus - Madeon"]
-            send_data = json.dumps(songs)
-        self.request.send(send_data)
+            # response = song_controller.toJSON()
+            response['type'] = "json"
+            songs = song_controller.toArray()
+            response['songs'] = songs
+        self.request.send(json.dumps(response))
         self.request.send("\n")
 
 # Write PID file of the daemon
@@ -67,8 +72,12 @@ def sqliteManager(data):
 
 # Main process loop
 def main(player_q, slq_q):
-    server = SocketServer.TCPServer((TCP_IP, TCP_PORT), MyTCPHandler)
-    server.serve_forever()
+    try:
+        server = SocketServer.TCPServer((TCP_IP, TCP_PORT), MyTCPHandler)
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print "Exiting"
+        server.shutdown()
 
 # __init__
 if __name__ == "__main__":

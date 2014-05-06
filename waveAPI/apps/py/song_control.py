@@ -1,4 +1,5 @@
 import sqlite3
+import json
 import sys
 
 class songs_controller:
@@ -29,6 +30,16 @@ class songs_controller:
         else:
             self.cur.execute("UPDATE Songs SET Votes = Votes + 1 WHERE Name = ?", (song['song'],))
         self.con.commit()
+
+    def toArray(self):
+        rowDict = {}
+        self.cur.execute("SELECT rowid, Name, Artist, Votes FROM Songs")
+        rows = self.cur.fetchall()
+        songs = []
+        for row in rows:
+            rowString = "%s - %s - %s - %s " % (str(row['rowid']), row['Name'], row['Artist'], str(row['Votes']))
+            songs.append(rowString)
+        return songs
 
     # Gets the row with the highest vote count, if the highest is -1, reset all songs to 0 
     def getHighest(self):
