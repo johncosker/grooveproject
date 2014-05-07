@@ -42,6 +42,7 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
             response['type'] = "json"
             songs = song_controller.toArray()
             response['songs'] = songs
+            print response
         self.request.send(json.dumps(response))
         self.request.send("\n")
 

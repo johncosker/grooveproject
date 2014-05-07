@@ -22,6 +22,12 @@ class songs_controller:
             self.cur.execute("UPDATE Songs SET Votes = Votes + 1 WHERE Name = ?", (song.name,))
         self.con.commit()
 
+    def removeSongById(self, rowid):
+        """docstring for removeSongById"""
+        self.cur.execute("DELETE FROM Songs WHERE rowid=?", (rowid,))
+        self.con.commit()
+        
+
     # Add a song with a know stream URL
     def addKnownSong(self, song):
         if not self.checkExists(song['song']):
@@ -37,8 +43,12 @@ class songs_controller:
         rows = self.cur.fetchall()
         songs = []
         for row in rows:
-            rowString = "%s - %s - %s - %s " % (str(row['rowid']), row['Name'], row['Artist'], str(row['Votes']))
-            songs.append(rowString)
+            song = {}
+            song['name'] = row['Name']
+            song['artist'] = row['Artist']
+            song['rowid'] = row['rowid']
+            song['votes'] = row['Votes']
+            songs.append(song)
         return songs
 
     # Gets the row with the highest vote count, if the highest is -1, reset all songs to 0 
