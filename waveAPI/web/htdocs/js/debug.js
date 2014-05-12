@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+    // Set up event streamer listener
+    var eventStreamer = new EventSource('apps/py/webUpdate.py')
+    eventStreamer.addEventListener(function() {
+        alert(':)')
+        // http://www.html5rocks.com/en/tutorials/eventsource/basics/
+    })
+
     //Custom messages
     $('#ccSubmit').on('click', function() {
         cmd = {'cmd'   : $('#ccCmd').val(),
@@ -60,6 +67,7 @@ $(document).ready(function() {
                'info'  : ''}
         processCommand(cmd, this)
     })
+
     //Standard user cmds
     //UP VOTE
     $('#upSong').on('click', function() {
@@ -69,7 +77,7 @@ $(document).ready(function() {
                'info'  : ''}
         processCommand(cmd, this)
     })
-    
+
     //DOWN VOTE
     $('#downSong').on('click', function() {
         cmd = {'cmd'   : 'downSong',
@@ -79,7 +87,7 @@ $(document).ready(function() {
         alert (cmd['cmd'])
         //processCommand(cmd, this)
     })
-    
+
     //Seach cmds
     //search
     $('#searchBox').on('click', function() {
@@ -112,8 +120,10 @@ $(document).ready(function() {
             }
         })
     })
+
     //Add selected song
     $('#AddSelectedSong').on('click', function() {
+        enableDisableButton( $(this ) )
         $('input:checkbox[name=songAdd]:checked').each(function () {
             row = $(this).closest('tr')
             cmd = {'cmd'   : 'addSong',
@@ -127,8 +137,11 @@ $(document).ready(function() {
                   }
             processCommand(cmd, this)
         });
+        enableDisableButton( $('#searchBox') )
     })
 })
+
+//  *********************  FUNCTIONS  *********************  //
 
 function processCommand(cmd, buttonId) {
     enableDisableButton( $(buttonId) )
