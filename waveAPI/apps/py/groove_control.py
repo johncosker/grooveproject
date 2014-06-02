@@ -1,6 +1,6 @@
 from grooveshark import Client
 import vlc
-
+import json
 class groove_controller:
     def __init__(self, manager):
         self.client = Client()
@@ -18,14 +18,26 @@ class groove_controller:
 
     def getSong(self, songName):
         songs = self.client.search(songName, type='Songs')
-        song = songs.next()
-        while True:
-            if self.checkSong(song):
-                print("Found: " + '\033[92m' + song.name + " - " + song.artist.name + '\033[0m')
-                return song
-            else:
-                song = songs.next()
-    def getAll(self, songName):
-        art = self.client.search(songName, Client.ARTISTS)
-        return art.next().songs
+        try:
+            song = songs.next()
+            while True:
+                if self.checkSong(song):
+                    print("Found: " + '\033[92m' + song.name + " - " + song.artist.name + '\033[0m')
+                    return song
+                else:
+                    song = songs.next()
+        except Exception as e:
+            return "Error"
+        def getAll(self, songName):
+            art = self.client.search(songName, Client.ARTISTS)
+            return art.next().songs
 
+    def getManySongs(self, search ,n):
+        foundSongs = self.client.search(search)
+        returnData = []
+        songCount = 0
+        while songCount < n:
+            song = foundSongs.next()
+            returnData.append({'song' : song.name, 'artist' : song.artist.name, 'album' : song.album.name, 'stream' : song.stream.url})
+            songCount += 1
+        return returnData

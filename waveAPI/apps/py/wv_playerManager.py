@@ -9,6 +9,7 @@ import itertools
 import vlc
 import logging
 import subprocess
+from time import sleep
 
 from multiprocessing import Process
 from grooveshark import Client
@@ -38,6 +39,9 @@ class playerManager(object):
                 logging.info("from worker: %s" % (recievedCmd))
                 self.handleInput(recievedCmd['cmd'])
 
+    def wait():
+        sleep(15)
+
     def playPopular(self):
         logging.info("starting to play pop list")
         logging.info("Playing PopList")
@@ -66,9 +70,12 @@ class playerManager(object):
     #Add a song to the database
     def add(self, string):
         song = self.gc.getSong(string)
-        self.sc.addSong(song)
-        if self.vc.count() == 0:
-            self.addNextSong()
+        if not song == "Error":
+            self.sc.addSong(song)
+            if self.vc.count() == 0:
+                self.addNextSong()
+        else:
+            print ( "Error getting song" )
 
     #Pull next song from DB and add to vlc_controller
     def addNextSong(self):

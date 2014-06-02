@@ -50,6 +50,7 @@ send_data = json.dumps(msgToSend)
 socketInst = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socketInst.connect((TCP_IP, TCP_PORT))
 socketInst.send(send_data)
+socketInst.send("\n")
 data = socketInst.recv(BUFFER_SIZE)
 socketInst.close()
 

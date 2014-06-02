@@ -35,3 +35,6 @@ def check_for_open_port(port):
     if pid != '':
         process = subprocess.Popen(['kill', '-9', pid], stdout=subprocess.PIPE)
     sleep(1)
+
+def wait():
+    sleep(15)
