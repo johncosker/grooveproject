@@ -17,14 +17,15 @@ def parseCmd(msg):
     else:
         msg = msg[2:-2]
     return msg
-
+'''
 cmdRequest = cgi.FieldStorage()
 
 cmd = parseCmd( str(cmdRequest.getlist('cmd')) )
 user = parseCmd( str(cmdRequest.getlist('user')) )
 target = parseCmd( str(cmdRequest.getlist('target')) )
 info = parseCmd( str(cmdRequest.getlist('info')) )
-
+'''
+info = 'weezer'
 foundSongs = client.search(info, type='Songs')
 
 returnData = []
