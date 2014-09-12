@@ -19,7 +19,7 @@ from song_control import songs_controller
 
 class playerManager(object):
     def __init__(self, queue):
-        logging.basicConfig(filename='/var/log/python.log',
+        logging.basicConfig(filename='/opt/grooveproject/log/python.log',
                 format='WAVE - %(message)s',
                 level=logging.DEBUG)
         self.client = Client()

@@ -1,49 +1,46 @@
 <VirtualHost *:80>
-ServerAdmin chrieff@gmail.com
-DocumentRoot /opt/grooveproject/waveAPI/web/views
-#test2
-<Directory />
-Options FollowSymLinks
-AllowOverride Options
-</Directory>
-<Directory /opt/grooveproject/waveAPI/web/views>
-AcceptPathInfo On
-Options Indexes FollowSymLinks MultiViews
-AllowOverride Options
-Order allow,deny
-allow from all
-</Directory>
+	ServerAdmin chrieff@gmail.com
+	DocumentRoot /opt/grooveproject/waveAPI/web/views/
 
-#HTDOCS
-Alias /htdocs/ "/opt/grooveproject/waveAPI/web/htdocs/"
-<Directory "/opt/grooveproject/waveAPI/web/htdoc">
-Options Indexes FollowSymLinks
-Order allow,deny
-Allow from all
-</Directory>
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride Options
+	</Directory>
+    ScriptAlias /views/ "/opt/grooveproject/waveAPI/views/"
+	<Directory /opt/grooveproject/waveAPI/web/views>
+		AcceptPathInfo On
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride Options
+		Require all granted
+	</Directory>
 
-#APPS
-Alias /apps/ "/opt/grooveproject/waveAPI/apps/"
-<Directory "/opt/grooveproject/waveAPI/apps">
-Options Indexes FollowSymLinks +ExecCGI
-AddHandler cgi-script .py
-Order allow,deny
-Allow from all
-</Directory>
+    #HTDOCS
+    Alias /htdocs/ "/opt/grooveproject/waveAPI/web/htdocs/"
+	<Directory "/opt/grooveproject/waveAPI/web/htdocs">
+		Options FollowSymlinks
+                AllowOverride None
+                Require all granted
+	</Directory>
 
-#JQUERY
-Alias /3rd_party/ "/opt/grooveproject/waveAPI/web/3rd_party/"
-<Directory "/opt/grooveproject/waveAPI/web/3rd_party/">
-Options Indexes FollowSymLinks
-Order allow,deny
-Allow from all
-</Directory>
+    #APPS
+    ScriptAlias /apps/ "/opt/grooveproject/waveAPI/apps/"
+	<Directory "/opt/grooveproject/waveAPI/apps">
+		Options +ExecCGI
+		AddHandler cgi-script .py
+		Options FollowSymlinks
+                AllowOverride None
+                Require all granted
+	</Directory>
 
-ErrorLog ${APACHE_LOG_DIR}/error.log
+    #3rd Party plug-ins
+    Alias /3rd_party/ "/opt/grooveproject/waveAPI/web/3rd_party/"
+	<Directory "/opt/grooveproject/waveAPI/web/3rd_party/">
+		Options FollowSymlinks
+                AllowOverride None
+                Require all granted
+	</Directory>
 
-# Possible values include: debug, info, notice, warn, error, crit,
-# alert, emerg.
-LogLevel warn
-
-CustomLog ${APACHE_LOG_DIR}/access.log combined
+	LogLevel warn
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>

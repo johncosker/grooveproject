@@ -1,13 +1,14 @@
 $(document).ready(function() {
-
+    /*
     // Set up event streamer listener
     var eventStreamer = new EventSource('apps/py/webUpdate.py')
     eventStreamer.addEventListener(function() {
         alert(':)')
         // http://www.html5rocks.com/en/tutorials/eventsource/basics/
     })
+    */
 
-    //Custom messages
+    // Custom messages
     $('#ccSubmit').on('click', function() {
         cmd = {'cmd'   : $('#ccCmd').val(),
                'user'  : $('#ccUser').val(),
@@ -16,7 +17,7 @@ $(document).ready(function() {
         processCommand(cmd, this)
     })
 
-    //Open messages
+    // Open messages
         $('#acSubmit').on('click', function() {
         $.ajax({
             type: 'POST',
@@ -31,8 +32,8 @@ $(document).ready(function() {
         })
     })
 
-    //Admin Cmds
-    //PLAY
+    // Admin Cmds
+    // PLAY
     $('#play').on('click', function() {
         cmd = {'cmd'   : 'play',
                'user'  : 'admin',
@@ -50,7 +51,7 @@ $(document).ready(function() {
         processCommand(cmd, this)
     })
 
-    //PAUSE
+    // PAUSE
     $('#pause').on('click', function() {
         cmd = {'cmd'   : 'pause',
                'user'  : 'admin',
@@ -59,7 +60,7 @@ $(document).ready(function() {
         processCommand(cmd, this)
     })
 
-    //SKIP
+    // SKIP
     $('#skip').on('click', function() {
         cmd = {'cmd'   : 'skip',
                'user'  : 'admin',
@@ -68,8 +69,8 @@ $(document).ready(function() {
         processCommand(cmd, this)
     })
 
-    //Standard user cmds
-    //UP VOTE
+    // Standard user cmds
+    // UP VOTE
     $('#upSong').on('click', function() {
         cmd = {'cmd'   : 'upSong',
                'user'  : 'admin',
@@ -78,7 +79,7 @@ $(document).ready(function() {
         processCommand(cmd, this)
     })
 
-    //DOWN VOTE
+    // DOWN VOTE
     $('#downSong').on('click', function() {
         cmd = {'cmd'   : 'downSong',
                'user'  : 'admin',
@@ -88,8 +89,8 @@ $(document).ready(function() {
         //processCommand(cmd, this)
     })
 
-    //Seach cmds
-    //search
+    // Seach cmds
+    // Search
     $('#searchBox').on('click', function() {
         enableDisableButton( $(this ) )
         $.ajax({
@@ -121,7 +122,7 @@ $(document).ready(function() {
         })
     })
 
-    //Add selected song
+    // Add selected song
     $('#AddSelectedSong').on('click', function() {
         enableDisableButton( $(this ) )
         $('input:checkbox[name=songAdd]:checked').each(function () {

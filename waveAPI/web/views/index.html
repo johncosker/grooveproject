@@ -1,88 +1,132 @@
-<!--
-TODO:
-
--search for songs
-    -start with a input box and add button
-    -update:
-        -dataTable showing all results
-        -allow user to select one song 
-
--->
 <!DOCTYPE html>
-<html>
-    <head>
-        <script type="text/javascript" src="3rd_party/jquery.js"></script>
-        <script type="text/javascript" src="htdocs/js/debug.js"></script>
-        <script type="text/javascript" src="htdocs/css/debug.css"></script>
-        <link rel="stylesheet" type="text/css" href="/htdocs/css/debug.css">
-    </head>
-    
-    <body>
-        <h1>Debug Control screen</h1>
-        <div>This page is used to test all functions of the Wave Player</div>
-        <br><br>
-        <div id='aControl'>Custom Controls</div>
-        CMD: <input type='text' id='ccCmd'></input>
-        USER: <input type='text' id='ccUser'></input>
-        TARGET: <input type='text' id='ccTarget'></input>
-        INFO: <input type='text' id='ccInfo'></input>
-        <button type="button" id="ccSubmit">Submit</button>
-        <br><br>
-        <div id='aControl'>Any Controls</div>
-        OPEN FORM: <input type='text' id='ccCmd'></input>
-        <button type="button" id="acSubmit">Submit</button>
-        <br><br>
-        <div id='aControl'>Admin Controls</div>
-        <button type="button" id="play">Play</button>
-        <button type="button" id="playPopular">Play Popular</button>
-        <button type="button" id="pause">Pause</button>
-        <button type="button" id="skip">Skip</button>
+<html lang="en">
+<head>
+    <title>Wave Portal</title>
 
-        <br><br>
-        <div id='sControl'>Standard Controls</div>
-        <button type="button" id="upSong">Up boat</button>
-        <button type="button" id="downSong">Down boat</button>
+    <!-- CSS -->
+    <link href="3rd_party/css/bootstrap.min.css" rel="stylesheet">
+    <link href="3rd_party/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="3rd_party/css/portfolio-item.css" rel="stylesheet">
+    <link href="htdocs/css/index.css" rel="stylesheet">
+</head>
 
-        <br><br>
-        <div id='search'>Search Controls</div>
-        <input type='text' id='searchText' name='searhBox'></input>
-        <input id='searchBox' type="submit" value="Search">
-        <input id='AddSelectedSong' type="submit" value="Add Selected Song">
-        <div id='search'>Search Results</div>
-        <table id='searchContent'style="width:800px">
-            <tr>
-                <th><input type='checkbox' name='songAdd'></th>
-                <th>Song</th>
-                <th>Artist</th>		
-                <th>Album</th>
-            </tr>
-        </table>
-        <div id='serachResults'></div>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Player</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row" id=seachContainer>
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <input id="searchInput" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button id="searchButton" class="btn btn-default" type="button">Search</button>
+                    </span>
+                </div>
+            </div>
+        </div>
         <br>
-        <div id='sControl'>SQLite Controls</div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#playList" role="tab" data-toggle="tab">Play List</a></li>
+            <li><a href="#searchResults" role="tab" data-toggle="tab">Search Results</a></li>
+            <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
 
-        <button type="button" id="refresh">Refresh</button>
-        <table style="width:500px">
-            <tr>
-                <th>Song</th>
-                <th>Artist</th>		
-                <th>Album</th>
-            </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>		
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>Eve</td>
-                <td>Jackson</td>		
-                <td>94</td>
-            </tr>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>		
-                <td>80</td>
-            </tr>
-        </table>
-    </body>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="playList">
+                <table id="playListTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="1">Song</th>
+                            <th class="2">Artist</th>
+                            <th class="3">Album</th>
+                            <th class="4">Votes</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="searchResults">
+                <table id="searchResultsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="0">Select</th>
+                            <th class="1">Song</th>
+                            <th class="2">Artist</th>
+                            <th class="3">Album</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="settings">
+                No settings can be currently changed.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">Currently Playing</h3>
+                <button type="button" class="btn btn-default">Play</button>
+                <button type="button" class="btn btn-default">Pause</button>
+                <button type="button" class="btn btn-default">Vote to skip</button>
+            </div>
+
+            <div class="col-lg-12 spacer">
+                TODO :: current song playing
+            </div>
+
+            <div class="col-lg-12 spacer">
+                <div id="songProgress" class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                        aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <footer id="copyRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    TODO :: Align to botton
+                    <p>Copyright &copy; Wave 2014</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JS -->
+    <script src="3rd_party/js/jquery.js"></script>
+    <script src="3rd_party/js/jquery-ui.js"></script>
+    <script src="3rd_party/js/jquery.dataTables.min.js"></script>
+    <script src="3rd_party/js/bootstrap.min.js"></script>
+    <script src="htdocs/js/index.js"></script>
+</body>
 </html>

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # UDP multicast listener
+import __init__
 import json
 import socket
 import struct
@@ -149,7 +150,7 @@ def main(player_q, slq_q):
 
 # __init__
 if __name__ == "__main__":
-    logging.basicConfig(filename='/var/log/python.log',
+    logging.basicConfig(filename='/opt/grooveproject/log/python.log',
                         format='Wave Player - %(message)s',
                         level=logging.DEBUG)
     writePid()
