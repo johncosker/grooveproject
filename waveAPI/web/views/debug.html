@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="3rd_party/js/jquery.js"></script>
+        <script type="text/javascript" src="apps/py/test.js"></script>
+        <script type="text/javascript" src="htdocs/js/debug.js"></script>
+        <script type="text/javascript" src="htdocs/css/debug.css"></script>
+        <link rel="stylesheet" type="text/css" href="/htdocs/css/debug.css">
+    </head>
+    
+    <body>
+        <h1>Debug Control screen</h1>
+        <div>This page is used to test all functions of the Wave Player</div>
+		<a href='/wavePortal.html'>Wave Portal</a>
+        <br><br>
+        <div id='aControl'>Custom Controls</div>
+        CMD: <input type='text' id='ccCmd'></input>
+        USER: <input type='text' id='ccUser'></input>
+        TARGET: <input type='text' id='ccTarget'></input>
+        INFO: <input type='text' id='ccInfo'></input>
+        <button type="button" id="ccSubmit">Submit</button>
+        <br><br>
+        <div id='aControl'>Any Controls</div>
+        OPEN FORM: <input type='text' id='ccCmd'></input>
+        <button type="button" id="acSubmit">Submit</button>
+        <br><br>
+        <div id='aControl'>Admin Controls</div>
+        <button type="button" id="play">Play</button>
+        <button type="button" id="playPopular">Play Popular</button>
+        <button type="button" id="pause">Pause</button>
+        <button type="button" id="skip">Skip</button>
+
+        <br><br>
+        <div id='sControl'>Standard Controls</div>
+        <button type="button" id="upSong">Up boat</button>
+        <button type="button" id="downSong">Down boat</button>
+
+        <br><br>
+        <div id='search'>Search Controls</div>
+        <input type='text' id='searchText' name='searhBox'></input>
+        <input id='searchBox' type="submit" value="Search">
+        <input id='AddSelectedSong' type="submit" value="Add Selected Song">
+        <div id='search'>Search Results</div>
+        <table id='searchContent'style="width:800px">
+            <tr>
+                <th><input type='checkbox' name='songAdd'></th>
+                <th>Song</th>
+                <th>Artist</th>		
+                <th>Album</th>
+            </tr>
+        </table>
+        <div id='serachResults'></div>
+        <br>
+        <div id='sControl'>SQLite Controls</div>
+
+        <button type="button" id="refresh">Refresh</button>
+        <table style="width:500px">
+            <tr>
+                <th>Song</th>
+                <th>Artist</th>		
+                <th>Album</th>
+            </tr>
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>		
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>		
+                <td>94</td>
+            </tr>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>		
+                <td>80</td>
+            </tr>
+        </table>
+    </body>
+</html>
