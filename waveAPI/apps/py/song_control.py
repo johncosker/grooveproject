@@ -1,11 +1,12 @@
 import sqlite3
 import json
 import sys
+import utils
 
 class songs_controller:
     # Initialize controller, maybe need to explore thread safety
     def __init__(self, manager):
-        self.con = sqlite3.connect('/opt/grooveproject/waveAPI/db/songs.db', check_same_thread=False)
+        self.con = sqlite3.connect(utils.getDBdir(), check_same_thread=False)
         self.con.text_factory = str
         self.con.row_factory = sqlite3.Row
         with self.con:

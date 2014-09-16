@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # UDP multicast listener
-import __init__
+import utils
+utils.setSystemSettings()
 import json
 import socket
 import struct
@@ -8,8 +9,6 @@ import logging
 import os
 import json
 import wv_playerManager
-import time
-import utils
 from time import sleep
 from twisted.internet.protocol import ServerFactory, Protocol
 from twisted.internet import threads
@@ -20,17 +19,8 @@ from groove_control import groove_controller
 from song_control import songs_controller
 import SocketServer
 
-TCP_IP = utils.get_ip_address('eth0')
-TCP_PORT = 5055
-BUFFER_SIZE = 1024
-
 song_controller = songs_controller(1)
 gc = groove_controller(None)
-# Write PID file of the daemon
-def writePid():
-    pid = str(os.getpid())
-    pidfile = "/var/run/wv_interfaceInformer.pid"
-    file(pidfile, 'w').write(pid)
 
 # Starts the player instance that recieves commands from Queue (player_q)
 def startPlayerWorker(q):
@@ -38,10 +28,6 @@ def startPlayerWorker(q):
     worker = Process(target=wv_playerManager.playerManager, args = (q,))
     worker.daemon = True
     worker.start()
-
-# Starts SQLite instance that recieves commands from Queue (slq_q)
-def startSqlWorker(q):
-    tmp = 1
 
 def sqliteManager(data):
     if data['cmd'] == 'addSong':
@@ -90,6 +76,7 @@ class CmdProtocol(Protocol):
         pass
 
     def dataReceived(self, data):
+        print "got new message"
         response = {}
         parsedCmdMsg = json.loads(data)
         logging.info(parsedCmdMsg)
@@ -141,7 +128,7 @@ def main(player_q, slq_q):
     try:
         factory = MyFactory(player_q, slq_q)
         from twisted.internet import reactor
-        port = reactor.listenTCP(TCP_PORT, factory)
+        port = reactor.listenTCP(utils.get_port(), factory)
         print 'Serving %s.' % (port.getHost())
         reactor.run()
     except KeyboardInterrupt:
@@ -150,40 +137,8 @@ def main(player_q, slq_q):
 
 # __init__
 if __name__ == "__main__":
-    logging.basicConfig(filename='/opt/grooveproject/log/python.log',
-                        format='Wave Player - %(message)s',
-                        level=logging.DEBUG)
-    writePid()
+    utils.setSystemSettings()
     player_q = Queue()
     slq_q = Queue()
     startPlayerWorker(player_q)
-    startSqlWorker(slq_q)
     main(player_q, slq_q)
-
-"""
-#TODO:
--Replace all prints
-    -Change them all to a foo that will create a json 
-        object to return
-    -Object should include errors, success
-    
--Connect to running media player to submitt command
-   -each command should call its own foo in the media
-        player
-       -these commands can also be used for internal
-            media player use
-
--add handling for adding songs to the db
-    -this should be the song ID, client it is loaded from
-        -only allow songs from verified clients (at first)
-    
--add handling for up/down boat
-    -these commnds should include the unique SQL id
-    
--add get all entries in db
-    -prepair these to json
-    -maybe include a quick update that only includes changed
-        data in the db
-        -votes/order
-        -have the agent use this info to rearange the dataTable    
-"""
