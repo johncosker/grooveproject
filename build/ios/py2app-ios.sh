@@ -1,0 +1,1 @@
+easy_install -U py2app
