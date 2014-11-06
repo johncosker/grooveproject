@@ -1,78 +1,82 @@
 $(document).ready(function() {
+    responsiveFormatting()
+    startWebSockets()
     g_playTable = $('#playListTable').dataTable({
-		"bFilter":       false,
-		"bPaginate": false,
-		"bInfo":         false,
-		"oLanguage": {"sEmptyTable": "No songs in the play list."}
-		})
+        "bFilter":   false,
+        "bPaginate": false,
+        "bInfo":     false,
+        "sScrollY":  "100px",
+        "oLanguage": {"sEmptyTable": "No songs in the play list."},
+        "aoColumns": [{ "bSortable": false },
+                      { "bSortable": true },
+                      { "bSortable": true },
+                      { "bSortable": true }]
+    })
 
     g_searchTable = $('#searchResultsTable').dataTable({
-		"bFilter":        false,
-		"bPaginate":  false,
-		"bInfo":          false,
-		"oLanguage": {"sEmptyTable": "No search results."}
-	})
-/*
-    // Set up event streamer listener
-    var eventStreamer = new EventSource('apps/py/webUpdate.py')
-    eventStreamer.addEventListener(function() {
-        alert(':)')
-        // http://www.html5rocks.com/en/tutorials/eventsource/basics/
+        "bFilter":   false,
+        "bPaginate": false,
+        "bInfo":     false,
+        "sScrollY":  "100px",
+        "oLanguage": {"sEmptyTable": "No songs in the play list."},
+        "aoColumns": [{ "bSortable": false },
+                      { "bSortable": true },
+                      { "bSortable": true },
+                      { "bSortable": true }]
     })
-    */
 
     // PLAY
     $('#play').on('click', function() {
-        cmd = {'cmd'   : 'play',
-					 'user'   : 'admin',
-					 'target' : 'player',
-					 'info'    : ''}
+        var cmd = {'cmd':    'play',
+               'user':   'admin',
+               'target': 'player',
+               'info':   ''}
         processCommand(cmd, this)
     })
 
-    //PLAY Popular
+    // PLAY Popular
     $('#playPopular').on('click', function() {
-        cmd = {'cmd'   : 'popular',
-					 'user'   : 'admin',
-					 'target' : 'player',
-					 'info'     : ''}
+        var cmd = {'cmd'   : 'popular',
+               'user'   : 'admin',
+               'target' : 'player',
+               'info'     : ''}
         processCommand(cmd, this)
     })
 
     // PAUSE
     $('#pause').on('click', function() {
-        cmd = {'cmd'   : 'pause',
-					 'user'   : 'admin',
-					 'target' : 'player',
-					 'info'    : ''}
+        var cmd = {'cmd':    'pause',
+               'user':   'admin',
+               'target': 'player',
+               'info':   ''}
         processCommand(cmd, this)
     })
 
     // SKIP
     $('#skip').on('click', function() {
-        cmd = {'cmd'   : 'skip',
-					 'user'  : 'admin',
-					 'target': 'player',
-					 'info'  : ''}
+        var cmd = {'cmd':    'skip',
+               'user':   'admin',
+               'target': 'player',
+               'info':   ''}
         processCommand(cmd, this)
     })
 
     // Standard user cmds
     // UP VOTE
     $('#upSong').on('click', function() {
-        cmd = {'cmd'   : 'upSong',
-					 'user'   : 'admin',
-					 'target' : 'player',
-					 'info'    : ''}
+        var cmd = {'cmd':    'upSong',
+               'user':   'admin',
+               'target': 'player',
+               'info':   ''}
         processCommand(cmd, this)
     })
 
     // DOWN VOTE
     $('#downSong').on('click', function() {
-        cmd = {'cmd'    : 'downSong',
-					'user'   : 'admin',
-					'target' : 'player',
-					'info'    : ''}
+        var cmd = {'cmd':    'downSong',
+               'user':   'admin',
+               'target': 'player',
+               'info':   ''}
         alert (cmd['cmd'])
         //processCommand(cmd, this)
     })
@@ -80,77 +84,123 @@ $(document).ready(function() {
     // Seach cmds
     // Search
     $('#searchButton').on('click', function() {
+        $('#searchResultsTab').trigger('click')
+        g_searchTable.fnClearTable()
         $.ajax({
             type: 'POST',
             url: 'apps/py/client_search.py',
-            data: {'cmd'   : 'search',
-					  'user'   : 'admin',
-					  'target' : 'search',
-					  'info'    : $('#searchInput').val()},
+            data: {'cmd':    'search',
+                   'user':   'admin',
+                   'target': 'search',
+                   'info':   $('#searchInput').val()},
             success: function(data) {
-				updateSearchResults(data)
-            },
-            error: function() {
-                //updateSearchResults(TODO :: ERROR ROW)
+                updateSearchResults(data)
             }
         })
     })
 
     // Add selected song
-    $('#AddSelectedSong').on('click', function() {
-        $('input:checkbox[name=songAdd]:checked').each(function () {
-            row = $(this).closest('tr')
-            cmd = {'cmd'   : 'addSong',
-                   'user'  : 'admin',
+    $('.addSong').on('click', function() {
+        var row = $(this).closest('tr')
+        var cmd = {'cmd':    'addSong',
+                   'user':   'admin',
                    'target': 'dataBase',
-                   'info'  : '',
+                   'info':   '',
                    'song':   $(row).find('.song').text(),
                    'album':  $(row).find('.album').text(),
-                   'artist': $(row).find('.artist').text(),
-                   'stream': $(row).attr('stream')
-                  }
-            processCommand(cmd, this)
-        });
+                   'artist': $(row).find('.artist').text()}
+        processCommand(cmd, this)
+    })
+
+    $('#searchInput').keydown(function(event) {
+        if (event.keyCode == 13) {
+            $('#searchButton').trigger('click')
+        }
+    })
+
+    $(window).on('resize', function() {
+        responsiveFormatting()
     })
 })
 
 //  *********************  FUNCTIONS  *********************  //
 
+function startWebSockets() {
+    connection = new WebSocket('ws://localhost:55558/echo');
+
+    // When the connection is open, send some data to the server
+    connection.onopen = function () {
+        console.log('connection.onopen')
+        connection.send('Ping'); // Send the message 'Ping' to the server
+    };
+
+    // Log errors
+    connection.onerror = function (error) {
+        console.log('WebSocket Error ' + error);
+        derek = error
+    };
+
+    // Log messages from the server
+    connection.onmessage = function (e) {
+        console.log('Server: ' + e.data);
+    };
+
+
+}
+
 function processCommand(cmd, buttonId) {
    $.ajax({
-            type: 'POST',
-            url: 'apps/py/wv_sendCommand.py',
-            data: cmd,
-            success: function(data) {
-                
-            },
-            error: function() {
-                alert(':(')
-            }
-        })
+        type: 'POST',
+        url: 'apps/py/wv_sendCommand.py',
+        data: cmd,
+        success: function(data) {
+
+        },
+        error: function() {
+            alert(':(')
+        }
+    })
 }
 
 function enableDisableButton(button) {
     if ($(button).attr("disabled") == 'disabled') {
         $(button).attr("disabled", false)
 
-    }
-    else {
+    } else {
         $(button).attr("disabled", true)
     }
 }
 
-function updatePlayList(entries) {
-	var EL = entries.length()
-	for (var x =0; x < EL; x++) {
-		g_searchTable.fnAddData(["N/A",
-											      entries[x].song,
-												  entries[x].artist,
-												  entries[x].album,
-												])
-	}
+function updateSearchResults(entries) {
+    var EL = entries.length
+    for (var x =0; x < EL; x++) {
+        g_searchTable.fnAddData(['<buttontype="button" class="addSong btn btn-default" onClick="addSong(this)"' +
+                                     'SongID='+ entries[x].SongID +' ArtistID='+ entries[x].ArtistID +'>Add</button>',
+                                 '<div class="searchDiv song">' + entries[x].song + '</div>',
+                                 '<div class="searchDiv artist">' + entries[x].artist + '</div>',
+                                 '<div class="searchDiv album">' + entries[x].album + '</div>'])
+    }
 }
 
-function updateSearchResults(entries) {
-	// TODO :: SHOW LAST SEARCH RETUSTS
+function updatePlayList(entries) {
+    // TODO :: SHOW LAST SEARCH RETUSTS
+}
+
+function addSong(button_row) {
+    var row = $(button_row).closest('tr')
+    var cmd = {'cmd':      'addSongBySourceType',
+           'user':     'admin',
+           'target':   'dataBase',
+           'info':     '',
+           'SongID':   $(button_row).attr('SongId'),
+           'ArtistID': $(button_row).attr('ArtistId'),
+           'song':     $(row).find('.song').text(),
+           'album':    $(row).find('.album').text(),
+           'artist':   $(row).find('.artist').text()}
+    processCommand(cmd, this)
+}
+
+function responsiveFormatting() {
+    var width = $('#mainNavContainer').width()
+    $('.li_searchBox').width(width - 225)
 }

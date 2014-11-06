@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 import json
 import cgi
 import socket
@@ -34,16 +34,18 @@ info = parseCmd( str(cmdRequest.getlist('info')) )
 
 msgToSend = {'cmd' : cmd, 'user' : user, 'target' : target, 'info' : info}
 
-if cmd == 'addSong': 
+if 'addSong' in cmd:
     song = parseCmd( str(cmdRequest.getlist('song')) )
     album = parseCmd( str(cmdRequest.getlist('album')) )
     artist = parseCmd( str(cmdRequest.getlist('artist')) )
-    stream = parseCmd( str(cmdRequest.getlist('stream')) )
+    SongID = parseCmd( str(cmdRequest.getlist('SongID')) )
+    ArtistID = parseCmd( str(cmdRequest.getlist('ArtistID')) )
 
     msgToSend['song'] = song
     msgToSend['album'] = album
     msgToSend['artist'] = artist
-    msgToSend['stream'] = stream
+    msgToSend['SongID'] = SongID
+    msgToSend['ArtistID'] = ArtistID
 
 send_data = json.dumps(msgToSend)
 

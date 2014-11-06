@@ -31,7 +31,7 @@ def startPlayerWorker(q):
 
 def sqliteManager(data):
     if data['cmd'] == 'addSong':
-        song_controller.addKnownSong({'song' : data['song'],
+        song_controller.addKnownSong({'song' :   data['song'],
                                       'artist' : data['artist'],
                                       'stream' : data['stream']})
     elif data['cmd'] == 'addSongAndroid':
@@ -40,12 +40,14 @@ def sqliteManager(data):
         song = arr[0]
         artist = arr[1]
         stream = arr[2]
-        song_controller.addKnownSong({'song' : song,
+        song_controller.addKnownSong({'song' :   song,
                                       'artist' : artist,
                                       'stream' : stream})
+    elif data['cmd'] == 'addSongBySourceType':
+        song_controller.addSongBySourceType(data)
     elif data['cmd'] == 'fetchdb':
         tmp = 1
-        
+
 class SearchHandler(object):
     def __init__(self, write_callback):
         self.write = write_callback
@@ -76,7 +78,6 @@ class CmdProtocol(Protocol):
         pass
 
     def dataReceived(self, data):
-        print "got new message"
         response = {}
         parsedCmdMsg = json.loads(data)
         logging.info(parsedCmdMsg)
@@ -113,8 +114,10 @@ class CmdProtocol(Protocol):
 
     def write(self, string):
         self.transport.write(string)
+
     def err(self, string):
         self.transport.write("Error thing")
+
 
 class MyFactory(ServerFactory):
     protocol = CmdProtocol
@@ -122,6 +125,7 @@ class MyFactory(ServerFactory):
     def __init__(self, player_q, slq_q):
         self.player_q = player_q
         self.slq_q = slq_q
+
 
 # Main process loop
 def main(player_q, slq_q):

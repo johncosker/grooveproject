@@ -1,0 +1,556 @@
+Wave Player - started
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'pause', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'pause', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'popular', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - started
+Wave Player - playerManager sarted
+Wave Player - started
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Pinkerton', u'target': u'dataBase', u'stream': u"''", u'song': u'Long Time Sunshine', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'album': u'Pinkerton', u'target': u'dataBase', u'stream': u"''", u'song': u'The Good Life', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Make Believe', u'target': u'dataBase', u'stream': u"''", u'song': u'Perfect Situation', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Pinkerton', u'target': u'dataBase', u'stream': u"''", u'song': u'Across the Sea', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Make Believe', u'target': u'dataBase', u'stream': u"''", u'song': u'Peace', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Pinkerton', u'target': u'dataBase', u'stream': u"''", u'song': u'Pink Triangle', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Pinkerton', u'target': u'dataBase', u'stream': u"''", u'song': u'Long Time Sunshine', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u"'90s Rock Gold", u'target': u'dataBase', u'stream': u"''", u'song': u"Say It Ain't So", u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Island in the Sun', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Photograph', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u"Say It Ain't So", u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Buddy Holly', u'target': u'dataBase', u'stream': u"''", u'song': u'Buddy Holly', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'pause', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'pause', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u"''", u'target': u'dataBase', u'stream': u"''", u'song': u"''", u'cmd': u'addSong', u'user': u'admin', u'artist': u"''"}
+Wave Player - started
+Wave Player - playerManager sarted
+Wave Player - started
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Island in the Sun', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Photograph', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u"Say It Ain't So", u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Buddy Holly', u'target': u'dataBase', u'stream': u"''", u'song': u'Buddy Holly', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Island in the Sun', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Photograph', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u"Say It Ain't So", u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Buddy Holly', u'target': u'dataBase', u'stream': u"''", u'song': u'Buddy Holly', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Pork and Beans', u'target': u'dataBase', u'stream': u"''", u'song': u'Pork and Beans', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Hash Pipe', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'My Name Is Jonas', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Island in the Sun', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Photograph', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u"Say It Ain't So", u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Buddy Holly', u'target': u'dataBase', u'stream': u"''", u'song': u'Buddy Holly', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Pork and Beans', u'target': u'dataBase', u'stream': u"''", u'song': u'Pork and Beans', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - from worker: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Island in the Sun', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Photograph', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u"Say It Ain't So", u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Buddy Holly', u'target': u'dataBase', u'stream': u"''", u'song': u'Buddy Holly', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'target': u'dataBase', u'stream': u"''", u'song': u'Beverly Hills', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'target': u'dataBase', u'stream': u"''", u'song': u'Undone - The Sweater Song', u'cmd': u'addSong', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u'{"sourceName": "grooveshark"}', u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - info
+Wave Player - cmd
+Wave Player - user
+Wave Player - target
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - addSongBySourceType
+Wave Player - info
+Wave Player - cmd
+Wave Player - user
+Wave Player - target
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - info
+Wave Player - cmd
+Wave Player - user
+Wave Player - target
+Wave Player - addSongBySourceType
+Wave Player - info
+Wave Player - cmd
+Wave Player - user
+Wave Player - target
+Wave Player - {u'info': u"''", u'cmd': u'addSongBySourceType', u'user': u'admin', u'target': u'dataBase'}
+Wave Player - ADD SONG : 
+Wave Player - info
+Wave Player - cmd
+Wave Player - user
+Wave Player - target
+Wave Player - addSongBySourceType
+Wave Player - info
+Wave Player - cmd
+Wave Player - user
+Wave Player - target
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'cmd': u"''", u'user': u"''", u'target': u"''"}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'songID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - ADD SONG : 
+Wave Player - info
+Wave Player - album
+Wave Player - songID
+Wave Player - target
+Wave Player - song
+Wave Player - cmd
+Wave Player - user
+Wave Player - artist
+Wave Player - addSongBySourceType
+Wave Player - info
+Wave Player - album
+Wave Player - songID
+Wave Player - target
+Wave Player - song
+Wave Player - cmd
+Wave Player - user
+Wave Player - artist
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'songID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'songID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'songID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'1625', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'1625', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'1625', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'1625', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'1625', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - stream160a-he.grooveshark.com
+Wave Player - babd1695bb17802ff29b935c33e734a9968c63fb_54272a70_1751834_176bb4d_150346bc2_1_0
+Wave Player - http://stream160a-he.grooveshark.com/stream.php?streamKey=babd1695bb17802ff29b935c33e734a9968c63fb_54272a70_1751834_176bb4d_150346bc2_1_0
+Wave Player - <addinfourl at 140217390927096 whose fp = <socket._fileobject object at 0x7f86e7f20a50>>
+Wave Player - 4809712
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - stream67a-he.grooveshark.com
+Wave Player - d0482b3e5a62c22830f842d529a076517fecbf54_54272a86_1751834_176bb4d_150347121_1_0
+Wave Player - http://stream67a-he.grooveshark.com/stream.php?streamKey=d0482b3e5a62c22830f842d529a076517fecbf54_54272a86_1751834_176bb4d_150347121_1_0
+Wave Player - <addinfourl at 140217390959720 whose fp = <socket._fileobject object at 0x7f86e7cab5d0>>
+Wave Player - 4809712
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - http://stream126a-he.grooveshark.com/stream.php?streamKey=0c1c813825e77df632af7a089f26a5b0e35e0c01_54272abd_1751834_176bb4d_150347daa_1_0
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24447251', u'target': u'dataBase', u'song': u'Photograph', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27081532', u'target': u'dataBase', u'song': u"Say It Ain't So", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27081532', u'target': u'dataBase', u'song': u"Say It Ain't So", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'SongID': u'25289063', u'target': u'dataBase', u'song': u'Beverly Hills', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'25835465', u'target': u'dataBase', u'song': u'Undone - The Sweater Song', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'album': u'Beyonce', u'SongID': u'40383304', u'target': u'dataBase', u'song': u'Drunk In Love', u'cmd': u'addSongBySourceType', u'ArtistID': u'3853', u'user': u'admin', u'artist': u'Beyonc\\xc3\\xa9'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'album': u'BEYONCE', u'SongID': u'40946574', u'target': u'dataBase', u'song': u'XO', u'cmd': u'addSongBySourceType', u'ArtistID': u'3853', u'user': u'admin', u'artist': u'Beyonc\\xc3\\xa9'}
+Wave Player - SONG ADDED TO DB
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - 404 GET /echo (127.0.0.1) 0.55ms
+Wave Player - 200 GET / (127.0.0.1) 0.74ms
+Wave Player - 200 GET / (127.0.0.1) 0.82ms
+Wave Player - 200 GET / (127.0.0.1) 0.85ms
+Wave Player - 200 GET / (127.0.0.1) 0.85ms
+Wave Player - 200 GET / (127.0.0.1) 0.85ms
+Wave Player - 200 GET / (127.0.0.1) 0.37ms
+Wave Player - 200 GET / (127.0.0.1) 0.52ms
+Wave Player - 200 GET / (127.0.0.1) 0.49ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.58ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.49ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.35ms
+Wave Player - 404 GET /test (127.0.0.1) 0.49ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.92ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.90ms
+Wave Player - 200 GET / (127.0.0.1) 0.86ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.35ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.87ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.93ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.50ms
+Wave Player - 404 GET /websocket (127.0.0.1) 0.84ms
+Wave Player - 200 GET / (127.0.0.1) 0.32ms
+Wave Player - 200 GET / (127.0.0.1) 0.50ms
+Wave Player - 200 GET / (127.0.0.1) 1.39ms
+Wave Player - 405 GET /websocket (127.0.0.1) 0.39ms
+Wave Player - 405 GET /websocket (127.0.0.1) 0.51ms
+Wave Player - 405 GET /websocket (127.0.0.1) 0.87ms
+Wave Player - Uncaught exception GET /websocket (127.0.0.1)
+HTTPServerRequest(protocol='http', host='localhost:8888', method='GET', uri='/websocket', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Origin': 'http://192.168.1.123', 'Upgrade': 'websocket', 'Sec-Websocket-Extensions': 'permessage-deflate; client_max_window_bits, x-webkit-deflate-frame', 'Sec-Websocket-Version': '13', 'Connection': 'Upgrade', 'Sec-Websocket-Key': 'TpjP+oiXbRji7238DBwJgQ==', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36', 'Host': 'localhost:8888', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache'})
+Traceback (most recent call last):
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 1336, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "test.py", line 18, in get
+    self.write_message("Hello, world")
+AttributeError: 'Hello' object has no attribute 'write_message'
+Wave Player - 500 GET /websocket (127.0.0.1) 4.50ms
+Wave Player - Uncaught exception GET /websocket (127.0.0.1)
+HTTPServerRequest(protocol='http', host='localhost:8888', method='GET', uri='/websocket', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Origin': 'http://192.168.1.123', 'Upgrade': 'websocket', 'Sec-Websocket-Extensions': 'permessage-deflate; client_max_window_bits, x-webkit-deflate-frame', 'Sec-Websocket-Version': '13', 'Connection': 'Upgrade', 'Sec-Websocket-Key': 're21P30GuU8QwZR307Ocdw==', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36', 'Host': 'localhost:8888', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache'})
+Traceback (most recent call last):
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 1336, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "test.py", line 18, in get
+    self.write_message("Hello, world")
+AttributeError: 'Hello' object has no attribute 'write_message'
+Wave Player - 500 GET /websocket (127.0.0.1) 1.65ms
+Wave Player - Uncaught exception GET /websocket (127.0.0.1)
+HTTPServerRequest(protocol='http', host='localhost:8888', method='GET', uri='/websocket', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Origin': 'http://192.168.1.123', 'Upgrade': 'websocket', 'Sec-Websocket-Extensions': 'permessage-deflate; client_max_window_bits, x-webkit-deflate-frame', 'Sec-Websocket-Version': '13', 'Connection': 'Upgrade', 'Sec-Websocket-Key': 'yqJxDi3NTTfsmPzrV0upJQ==', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36', 'Host': 'localhost:8888', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache'})
+Traceback (most recent call last):
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 1336, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "test.py", line 18, in get
+    self.write_message("Hello, world")
+AttributeError: 'Hello' object has no attribute 'write_message'
+Wave Player - 500 GET /websocket (127.0.0.1) 1.50ms
+Wave Player - Uncaught exception GET /websocket (127.0.0.1)
+HTTPServerRequest(protocol='http', host='localhost:8888', method='GET', uri='/websocket', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Origin': 'http://192.168.1.123', 'Upgrade': 'websocket', 'Sec-Websocket-Extensions': 'permessage-deflate; client_max_window_bits, x-webkit-deflate-frame', 'Sec-Websocket-Version': '13', 'Connection': 'Upgrade', 'Sec-Websocket-Key': 'tasc/4W6EV0Un4KX7C+N/w==', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36', 'Host': 'localhost:8888', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache'})
+Traceback (most recent call last):
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 1336, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "test.py", line 18, in get
+    self.write_message("Hello, world")
+AttributeError: 'Hello' object has no attribute 'write_message'
+Wave Player - 500 GET /websocket (127.0.0.1) 0.57ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.79ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.50ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.87ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.85ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.83ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.77ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.88ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.87ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.49ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.12ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.36ms
+Wave Player - 400 GET /websocket (127.0.0.1) 0.87ms
+Wave Player - Uncaught exception GET /websocket (127.0.0.1)
+HTTPServerRequest(protocol='http', host='localhost:8888', method='GET', uri='/websocket', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Origin': 'http://192.168.1.123', 'Upgrade': 'websocket', 'Sec-Websocket-Extensions': 'permessage-deflate; client_max_window_bits, x-webkit-deflate-frame', 'Sec-Websocket-Version': '13', 'Connection': 'Upgrade', 'Sec-Websocket-Key': '/fSctSAD0aSA7JD6m9zawQ==', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36', 'Host': 'localhost:8888', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache'})
+Traceback (most recent call last):
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 1336, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "test.py", line 20, in get
+    self.set_status(4000)
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 309, in set_status
+    raise ValueError("unknown status code %d", status_code)
+ValueError: ('unknown status code %d', 4000)
+Wave Player - 500 GET /websocket (127.0.0.1) 2.37ms
+Wave Player - Uncaught exception GET /websocket (127.0.0.1)
+HTTPServerRequest(protocol='http', host='localhost:8888', method='GET', uri='/websocket', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Origin': 'http://192.168.1.123', 'Upgrade': 'websocket', 'Sec-Websocket-Extensions': 'permessage-deflate; client_max_window_bits, x-webkit-deflate-frame', 'Sec-Websocket-Version': '13', 'Connection': 'Upgrade', 'Sec-Websocket-Key': 'qACL42EHRpKM5hU2r69Inw==', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36', 'Host': 'localhost:8888', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache'})
+Traceback (most recent call last):
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 1336, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "test.py", line 20, in get
+    #self.set_status(400)
+  File "/opt/grooveproject/waveAPI/apps/3rdParty/tornado/web.py", line 309, in set_status
+    raise ValueError("unknown status code %d", status_code)
+ValueError: ('unknown status code %d', 4000)
+Wave Player - 500 GET /websocket (127.0.0.1) 1.90ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.76ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.96ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.77ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.89ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.59ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.49ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.85ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.00ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.42ms
+Wave Player - 200 GET / (127.0.0.1) 0.50ms
+Wave Player - No sockets activated. Use info log level to see the reason.
+Wave Player - No sockets activated. Use info log level to see the reason.
+Wave Player - No sockets activated. Use info log level to see the reason.
+Wave Player - No sockets activated. Use info log level to see the reason.
+Wave Player - No sockets activated. Use info log level to see the reason.
+Wave Player - No sockets activated. Use info log level to see the reason.
+Wave Player - No sockets activated. Use info log level to see the reason.
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - 200 GET /websocket (127.0.0.1) 13.19ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.88ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.91ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.53ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.34ms
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - ::ffff:192.168.1.123 - code 404, message File not found
+Wave Player - ::ffff:192.168.1.123 - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found
+Wave Player - localhost - code 404, message File not found

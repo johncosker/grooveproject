@@ -1,7 +1,12 @@
+#!/usr/bin/python
+import utils
+utils.setSystemSettings()
 import sqlite3
 import json
 import sys
-import utils
+import logging
+from grooveshark import Client
+
 
 class songs_controller:
     # Initialize controller, maybe need to explore thread safety
@@ -15,19 +20,19 @@ class songs_controller:
             self.cur.execute("CREATE TABLE Songs(Name TEXT, Artist TEXT, Votes INT,  Url TEXT)")
 
     # Add a song to the db, right now votes is only separate for testing, in the future all initial votes will be 0
-    def addSong(self, song):
-        if not self.checkExists(song.name):
-            songTuple = (song.name, song.artist.name, 1, song.stream.url)
+    def addSong(self, song, artist, url):
+        if not self.checkExists(song):
+            songTuple = (song, artist, 1, url)
             self.cur.execute("INSERT INTO Songs VALUES(?,?,?,?)", songTuple)
         else:
-            self.cur.execute("UPDATE Songs SET Votes = Votes + 1 WHERE Name = ?", (song.name,))
+            self.cur.execute("UPDATE Songs SET Votes = Votes + 1 WHERE Name = ?", (song,))
         self.con.commit()
 
     def removeSongById(self, rowid):
         """docstring for removeSongById"""
         self.cur.execute("DELETE FROM Songs WHERE rowid=?", (rowid,))
         self.con.commit()
-        
+
 
     # Add a song with a know stream URL
     def addKnownSong(self, song):
@@ -38,6 +43,13 @@ class songs_controller:
             self.cur.execute("UPDATE Songs SET Votes = Votes + 1 WHERE Name = ?", (song['song'],))
         self.con.commit()
         print '\033[92m{} - {}\033[0m'.format(song['song'], song['artist'])
+
+    def addSongBySourceType(self, rawData):
+        """Add song that does not yet have a stream url"""
+        client = Client()
+        client.init()
+        streamUrl = client.getStreamID(rawData['SongID'], rawData['ArtistID'])
+        self.addSong(rawData['song'], rawData['artist'], streamUrl)
 
     def toArray(self):
         rowDict = {}
@@ -53,7 +65,7 @@ class songs_controller:
             songs.append(song)
         return songs
 
-    # Gets the row with the highest vote count, if the highest is -1, reset all songs to 0 
+    # Gets the row with the highest vote count, if the highest is -1, reset all songs to 0
     def getHighest(self):
         self.cur.execute("SELECT rowid, * FROM Songs WHERE Votes = (SELECT MAX(Votes) FROM Songs) LIMIT 1")
         row = self.cur.fetchone()
@@ -74,5 +86,3 @@ class songs_controller:
             return 1
         else:
             return 0
-
-

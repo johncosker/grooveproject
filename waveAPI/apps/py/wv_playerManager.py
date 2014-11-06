@@ -1,14 +1,17 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 from __future__ import print_function
 
 import cgi
 import cgitb; cgitb.enable
+import utils
+utils.setSystemSettings()
 import os
 import time
 import itertools
 import vlc
 import logging
 import subprocess
+
 from time import sleep
 
 from multiprocessing import Process
@@ -17,18 +20,14 @@ from vlc_control import vlc_controller
 from groove_control import groove_controller
 from song_control import songs_controller
 
+
 class playerManager(object):
     def __init__(self, queue):
-        logging.basicConfig(filename='/opt/grooveproject/log/python.log',
-                format='WAVE - %(message)s',
-                level=logging.DEBUG)
         self.client = Client()
         self.client.init()
         self.gc = groove_controller(self)
         self.vc = vlc_controller(self)
         self.sc = songs_controller(self)
-
-        logging.info('started')
 
         logging.info("playerManager sarted")
 
@@ -36,7 +35,7 @@ class playerManager(object):
         while True:
             if queue.get:
                 recievedCmd = queue.get()
-                logging.info("from worker: %s" % (recievedCmd))
+                logging.info("raw cmd: %s" % (recievedCmd))
                 self.handleInput(recievedCmd['cmd'])
 
     def wait():
@@ -48,7 +47,7 @@ class playerManager(object):
         for song in self.client.popular():
             self.vc.addSong(song)
         self.vc.play()
-        
+
     def play(self):
         logging.info("Player: play()")
         self.vc.play()
@@ -63,12 +62,13 @@ class playerManager(object):
         self.addNextSong()
         self.vc.nextSong()
 
-    #Pring the vlc playlist, will not include songs in db
+    # Pring the vlc playlist, will not include songs in db
     def printList(self):
         self.vc.printList()
 
-    #Add a song to the database
+    # Add a song to the database
     def add(self, string):
+        logging.info("STRING : " + string)
         song = self.gc.getSong(string)
         if not song == "Error":
             self.sc.addSong(song)
@@ -77,10 +77,10 @@ class playerManager(object):
         else:
             print ( "Error getting song" )
 
-    #Pull next song from DB and add to vlc_controller
+    # Pull next song from DB and add to vlc_controller
     def addNextSong(self):
         row = self.sc.getHighest()
-        self.vc.addSongRow(row)	
+        self.vc.addSongRow(row)
 
     def handleInput(self, string):
         print("Input: " + string)
@@ -93,4 +93,4 @@ class playerManager(object):
         elif (string == 'play'):
             self.play()
         else:
-            self.add(string) 
+            self.add(string)
