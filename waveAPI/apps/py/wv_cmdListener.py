@@ -14,9 +14,8 @@ from song_control import songs_controller
 song_controller = songs_controller(1)
 gc = groove_controller(None)
 
-# Starts the player instance that recieves commands from Queue (player_q)
 def startPlayerWorker(q):
-    #playerInstance = wv_playerManager.playerManager(q)
+    """Starts the player instance that recieves commands from Queue (player_q)"""
     worker = Process(target=wv_playerManager.playerManager, args = (q,))
     worker.daemon = True
     worker.start()
@@ -27,18 +26,14 @@ def sqliteManager(data):
                                       'artist': data['artist'],
                                       'stream': data['stream']})
     elif data['cmd'] == 'addSongAndroid':
-        info = data['info']
-        arr = info.split(';')
-        song = arr[0]
-        artist = arr[1]
-        stream = arr[2]
-        song_controller.addKnownSong({'song':   song,
-                                      'artist': artist,
-                                      'stream': stream})
+        arr = data['info'].split(';')
+        song_controller.addKnownSong({'song':   arr[0],
+                                      'artist': arr[1],
+                                      'stream': arr[2]})
     elif data['cmd'] == 'addSongBySourceType':
         song_controller.addSongBySourceType(data)
     elif data['cmd'] == 'fetchdb':
-        tmp = 1
+        pass
 
 class SearchHandler(object):
     def __init__(self, write_callback):
@@ -54,14 +49,14 @@ class SearchHandler(object):
 
     def ret(self, data):
         response = {}
-        response['type'] = "json"
+        response['type'] = 'json'
         response['songs'] = data
-        response['queryType'] = "search"
-        self.write(json.dumps(response) + "\n")
+        response['queryType'] = 'search'
+        self.write(json.dumps(response) + '\n')
 
     def err(self, failure):
-        self.write("An error occured : %s\n" % failure.getErrorMessage())
-        print("An error occured : %s\n" % failure.getErrorMessage())
+        self.write('An error occured : %s\n' % failure.getErrorMessage())
+        print('An error occured : %s\n' % failure.getErrorMessage())
 
 class CmdProtocol(Protocol):
 
@@ -69,20 +64,20 @@ class CmdProtocol(Protocol):
         pass
 
     def dataReceived(self, data):
-        print 'dataReceived'
+        print('dataReceived')
         response = {}
         parsedCmdMsg = json.loads(data)
         logging.info(parsedCmdMsg)
         if parsedCmdMsg['target'] == 'player':
             player_q.put(parsedCmdMsg)
-            response['type'] = "Message"
-            response['Message'] = "Received"
+            response['type'] = 'Message'
+            response['Message'] = 'Received'
             self.transport.write(json.dumps(response))
             self.transport.write("\n")
         elif parsedCmdMsg['target'] == 'dataBase':
             sqliteManager(parsedCmdMsg)
-            response['type'] = "Message"
-            response['Message'] = "Received"
+            response['type'] = 'Message'
+            response['Message'] = 'Received'
             self.transport.write(json.dumps(response))
             self.transport.write("\n")
         elif parsedCmdMsg['target'] == 'db':
@@ -93,7 +88,6 @@ class CmdProtocol(Protocol):
                 self.transport.write(json.dumps(response))
                 self.transport.write("\n")
             elif parsedCmdMsg['cmd'] == "showdb":
-                # response = song_controller.toJSON()
                 response['type'] = "json"
                 response['queryType'] = "database"
                 songs = song_controller.toArray()
@@ -108,7 +102,7 @@ class CmdProtocol(Protocol):
         self.transport.write(string)
 
     def err(self, string):
-        self.transport.write("Error thing")
+        self.transport.write('Error thing')
 
 
 class MyFactory(ServerFactory):
@@ -120,24 +114,23 @@ class MyFactory(ServerFactory):
 
 class MyServerProtocol(WebSocketServerProtocol):
     def onMessage(self, payload, isBinary):
-        print(":D")
-        ## echo back message verbatim
+        print(':D')
         self.sendMessage(payload, isBinary)
 
 # __init__
-if __name__ == "__main__":
-    player_q = Queue()
-    startPlayerWorker(player_q)
+if __name__ == '__main__':
     try:
+        player_q = Queue()
+        startPlayerWorker(player_q)
         factory = MyFactory(player_q)
         port = reactor.listenTCP(utils.get_port(), factory)
         print('TCP Port %s.' % (port.getHost()))
 
-        #factory = WebSocketServerFactory()
-        #factory.protocol = MyServerProtocol
-        #port = reactor.listenTCP(5506, factory)
-        #print('WebSocket Port %s.' % (port.getHost()))
+        factory = WebSocketServerFactory()
+        factory.protocol = MyServerProtocol
+        port = reactor.listenTCP(5506, factory)
+        print('WebSocket Port %s.' % (port.getHost()))
 
         reactor.run()
-    except KeyboardInterrupt:
-        print("Exiting")
+    except:
+        print('INIT error')
