@@ -28,36 +28,36 @@ $(document).ready(function() {
     // PLAY
     $('#play').on('click', function() {
         var cmd = {'cmd':    'play',
-               'user':   'admin',
-               'target': 'player',
-               'info':   ''}
+                   'user':   'admin',
+                   'target': 'player',
+                   'info':   ''}
         processCommand(cmd, this)
     })
 
     // PLAY Popular
     $('#playPopular').on('click', function() {
         var cmd = {'cmd'   : 'popular',
-               'user'   : 'admin',
-               'target' : 'player',
-               'info'     : ''}
+                   'user'   : 'admin',
+                   'target' : 'player',
+                   'info'     : ''}
         processCommand(cmd, this)
     })
 
     // PAUSE
     $('#pause').on('click', function() {
         var cmd = {'cmd':    'pause',
-               'user':   'admin',
-               'target': 'player',
-               'info':   ''}
+                   'user':   'admin',
+                   'target': 'player',
+                   'info':   ''}
         processCommand(cmd, this)
     })
 
     // SKIP
     $('#skip').on('click', function() {
         var cmd = {'cmd':    'skip',
-               'user':   'admin',
-               'target': 'player',
-               'info':   ''}
+                   'user':   'admin',
+                   'target': 'player',
+                   'info':   ''}
         processCommand(cmd, this)
     })
 
@@ -65,18 +65,18 @@ $(document).ready(function() {
     // UP VOTE
     $('#upSong').on('click', function() {
         var cmd = {'cmd':    'upSong',
-               'user':   'admin',
-               'target': 'player',
-               'info':   ''}
+                   'user':   'admin',
+                   'target': 'player',
+                   'info':   ''}
         processCommand(cmd, this)
     })
 
     // DOWN VOTE
     $('#downSong').on('click', function() {
         var cmd = {'cmd':    'downSong',
-               'user':   'admin',
-               'target': 'player',
-               'info':   ''}
+                   'user':   'admin',
+                   'target': 'player',
+                   'info':   ''}
         alert (cmd['cmd'])
         //processCommand(cmd, this)
     })
@@ -88,7 +88,7 @@ $(document).ready(function() {
         g_searchTable.fnClearTable()
         $.ajax({
             type: 'POST',
-            url: 'apps/py/client_search.py',
+            url: 'apps/py/client_utils/song_search.py',
             data: {'cmd':    'search',
                    'user':   'admin',
                    'target': 'search',
@@ -126,7 +126,7 @@ $(document).ready(function() {
 //  *********************  FUNCTIONS  *********************  //
 
 function startWebSockets() {
-    connection = new WebSocket('ws://localhost:55558/echo');
+    connection = new WebSocket('ws://localhost:55558/'); // TODO replace w/ server IP
 
     // When the connection is open, send some data to the server
     connection.onopen = function () {
@@ -136,22 +136,19 @@ function startWebSockets() {
 
     // Log errors
     connection.onerror = function (error) {
-        console.log('WebSocket Error ' + error);
-        derek = error
+        alert("Server error: Can not connect to server.")
     };
 
     // Log messages from the server
     connection.onmessage = function (e) {
         console.log('Server: ' + e.data);
     };
-
-
 }
 
 function processCommand(cmd, buttonId) {
    $.ajax({
         type: 'POST',
-        url: 'apps/py/wv_sendCommand.py',
+        url: 'apps/py/client_utils/send_cmd.py',
         data: cmd,
         success: function(data) {
 
@@ -189,14 +186,14 @@ function updatePlayList(entries) {
 function addSong(button_row) {
     var row = $(button_row).closest('tr')
     var cmd = {'cmd':      'addSongBySourceType',
-           'user':     'admin',
-           'target':   'dataBase',
-           'info':     '',
-           'SongID':   $(button_row).attr('SongId'),
-           'ArtistID': $(button_row).attr('ArtistId'),
-           'song':     $(row).find('.song').text(),
-           'album':    $(row).find('.album').text(),
-           'artist':   $(row).find('.artist').text()}
+               'user':     'admin',
+               'target':   'dataBase',
+               'info':     '',
+               'SongID':   $(button_row).attr('SongId'),
+               'ArtistID': $(button_row).attr('ArtistId'),
+               'song':     $(row).find('.song').text(),
+               'album':    $(row).find('.album').text(),
+               'artist':   $(row).find('.artist').text()}
     processCommand(cmd, this)
 }
 

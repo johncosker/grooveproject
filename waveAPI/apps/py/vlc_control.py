@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import utils
-utils.setSystemSettings()
 import vlc
 from grooveshark import Client
 

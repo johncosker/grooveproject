@@ -1,5 +1,6 @@
-import itertools
+#!/usr/bin/python
 import utils
+import itertools
 import vlc
 from grooveshark import Client
 from vlc_control import vlc_controller
@@ -12,7 +13,7 @@ class manager:
 		self.gc = groove_controller(self)
 		self.vc = vlc_controller(self)
 		self.sc = songs_controller(self)
-		
+
         #Play the list, good for initially starting player
 	def play(self):
 		self.vc.play()
@@ -37,7 +38,7 @@ class manager:
         #Pull next song from DB and add to vlc_controller
 	def addNextSong(self):
 		row = self.sc.getHighest()
-		self.vc.addSongRow(row)	
+		self.vc.addSongRow(row)
 
 	def handleInput(self, string):
 		if (string == 'skip'):

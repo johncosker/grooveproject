@@ -1,17 +1,12 @@
 #!/usr/bin/python
+
 import json
 import cgi
 import socket
-import sys
 import logging
-import utils
 
-from time import sleep
-from multiprocessing.connection import Client
-from array import array
-from time import sleep
 
-TCP_IP = utils.get_ip_address('eth0')
+TCP_IP = "192.168.1.7"
 TCP_PORT = 5055
 BUFFER_SIZE = 1024
 
@@ -32,7 +27,7 @@ user = parseCmd( str(cmdRequest.getlist('user')) )
 target = parseCmd( str(cmdRequest.getlist('target')) )
 info = parseCmd( str(cmdRequest.getlist('info')) )
 
-msgToSend = {'cmd' : cmd, 'user' : user, 'target' : target, 'info' : info}
+msgToSend = {'cmd': cmd, 'user': user, 'target': target, 'info': info}
 
 if 'addSong' in cmd:
     song = parseCmd( str(cmdRequest.getlist('song')) )
@@ -45,7 +40,7 @@ if 'addSong' in cmd:
     msgToSend['album'] = album
     msgToSend['artist'] = artist
     msgToSend['SongID'] = SongID
-    msgToSend['SongID'] = ArtistID
+    msgToSend['ArtistID'] = ArtistID
 
 send_data = json.dumps(msgToSend)
 

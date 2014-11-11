@@ -1,10 +1,10 @@
 #!/usr/bin/python
 from __future__ import print_function
+import utils
+
 
 import cgi
 import cgitb; cgitb.enable
-import utils
-utils.setSystemSettings()
 import os
 import time
 import itertools

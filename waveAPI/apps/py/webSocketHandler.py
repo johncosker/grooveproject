@@ -126,7 +126,6 @@ used outside a firewall.
 """
 
 import utils
-utils.setSystemSettings()
 import BaseHTTPServer
 import CGIHTTPServer
 import SimpleHTTPServer

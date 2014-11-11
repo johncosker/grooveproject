@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import utils
-utils.setSystemSettings()
+
 import sqlite3
 import json
 import sys

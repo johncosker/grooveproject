@@ -1,23 +1,14 @@
 #!/usr/bin/python
-# UDP multicast listener
 import utils
-utils.setSystemSettings()
 import json
-import socket
-import struct
 import logging
-import os
-import json
 import wv_playerManager
-from time import sleep
 from twisted.internet.protocol import ServerFactory, Protocol
 from twisted.internet import threads
 from multiprocessing import Queue
 from multiprocessing import Process
-from ast import literal_eval
 from groove_control import groove_controller
 from song_control import songs_controller
-import SocketServer
 
 song_controller = songs_controller(1)
 gc = groove_controller(None)
@@ -141,7 +132,6 @@ def main(player_q, slq_q):
 
 # __init__
 if __name__ == "__main__":
-    utils.setSystemSettings()
     player_q = Queue()
     slq_q = Queue()
     startPlayerWorker(player_q)

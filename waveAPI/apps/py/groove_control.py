@@ -1,3 +1,5 @@
+#!/usr/bin/python
+import utils
 from grooveshark import Client
 import vlc
 import json

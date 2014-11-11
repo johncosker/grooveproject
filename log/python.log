@@ -554,3 +554,91 @@ Wave Player - localhost - code 404, message File not found
 Wave Player - localhost - code 404, message File not found
 Wave Player - localhost - code 404, message File not found
 Wave Player - localhost - code 404, message File not found
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24447251', u'target': u'dataBase', u'song': u'Photograph', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24447251', u'target': u'dataBase', u'song': u'Photograph', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27081532', u'target': u'dataBase', u'song': u"Say It Ain't So", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41622395', u'target': u'dataBase', u'song': u'Back to the Shack', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'SongID': u'25289063', u'target': u'dataBase', u'song': u'Beverly Hills', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451077', u'target': u'dataBase', u'song': u'Hash Pipe', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Buddy Holly', u'SongID': u'26323549', u'target': u'dataBase', u'song': u'Buddy Holly', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'25835465', u'target': u'dataBase', u'song': u'Undone - The Sweater Song', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Pork and Beans', u'SongID': u'10233760', u'target': u'dataBase', u'song': u'Pork and Beans', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27105008', u'target': u'dataBase', u'song': u'My Name Is Jonas', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41622396', u'target': u'dataBase', u'song': u'Eulogy for a Rock Band', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24431853', u'target': u'dataBase', u'song': u'Glorious Day', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27097725', u'target': u'dataBase', u'song': u'Buddy Holly', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41622401', u'target': u'dataBase', u'song': u'Cleopatra', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41619509', u'target': u'dataBase', u'song': u'Go Away', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41619508', u'target': u'dataBase', u'song': u'Da Vinci', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41622399', u'target': u'dataBase', u'song': u'Lonely Girl', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Raditude', u'SongID': u'23409438', u'target': u'dataBase', u'song': u"(If You're Wondering If I Want You to) I Want You To", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'31278805', u'target': u'dataBase', u'song': u'Only in Dreams (Kitchen Tapes)', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24431853', u'target': u'dataBase', u'song': u'Glorious Day', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41622396', u'target': u'dataBase', u'song': u'Eulogy for a Rock Band', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27097725', u'target': u'dataBase', u'song': u'Buddy Holly', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41622401', u'target': u'dataBase', u'song': u'Cleopatra', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41619509', u'target': u'dataBase', u'song': u'Go Away', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41619508', u'target': u'dataBase', u'song': u'Da Vinci', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Everything Will Be Alright in the End', u'SongID': u'41622399', u'target': u'dataBase', u'song': u'Lonely Girl', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Raditude', u'SongID': u'23409438', u'target': u'dataBase', u'song': u"(If You're Wondering If I Want You to) I Want You To", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'31278805', u'target': u'dataBase', u'song': u'Only in Dreams (Kitchen Tapes)', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Make Believe', u'SongID': u'24431601', u'target': u'dataBase', u'song': u'Pardon Me', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - 404 GET /echo (127.0.0.1) 1.32ms
+Wave Player - 404 GET /echo (127.0.0.1) 0.42ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.59ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.38ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.50ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.29ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.48ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.31ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.62ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.44ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.70ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.19ms
+Wave Player - 200 GET /websocket (127.0.0.1) 1.37ms
+Wave Player - 200 GET /websocket (127.0.0.1) 0.54ms
+Wave Player - 200 GET / (127.0.0.1) 1.84ms
+Wave Player - 200 GET / (127.0.0.1) 0.39ms
+Wave Player - 200 GET / (127.0.0.1) 0.86ms
+Wave Player - ('127.0.0.1', 57450) received client close
+Wave Player - ('127.0.0.1', 57458) received client close
+Wave Player - ('127.0.0.1', 57459) received client close
+Wave Player - ('127.0.0.1', 57460) received client close
+Wave Player - ('127.0.0.1', 57502) received client close
+Wave Player - ('127.0.0.1', 57503) received client close
+Wave Player - ('127.0.0.1', 57509) received client close
+Wave Player - ('127.0.0.1', 57511) received client close
+Wave Player - ('127.0.0.1', 57512) received client close
+Wave Player - ('127.0.0.1', 57520) received client close
+Wave Player - ('127.0.0.1', 57592) received client close
+Wave Player - ('127.0.0.1', 57593) received client close
+Wave Player - ('127.0.0.1', 57604) received client close
+Wave Player - ('127.0.0.1', 57605) received client close
+Wave Player - ('127.0.0.1', 57606) received client close
+Wave Player - ('127.0.0.1', 57670) received client close
+Wave Player - ('127.0.0.1', 57703) received client close
+Wave Player - ('127.0.0.1', 57704) received client close
+Wave Player - ('127.0.0.1', 57712) received client close
+Wave Player - ('127.0.0.1', 57714) received client close
+Wave Player - ('127.0.0.1', 57715) received client close
+Wave Player - ('127.0.0.1', 57723) received client close
+Wave Player - ('127.0.0.1', 57716) received client close
+Wave Player - ('127.0.0.1', 57727) received client close
+Wave Player - ('127.0.0.1', 57726) received client close
+Wave Player - ('127.0.0.1', 57724) received client close
+Wave Player - ('127.0.0.1', 57725) received client close
+Wave Player - ('127.0.0.1', 57742) received client close
+Wave Player - ('127.0.0.1', 57743) received client close
+Wave Player - ('127.0.0.1', 57744) received client close
+Wave Player - ('127.0.0.1', 57752) received client close
+Wave Player - ('127.0.0.1', 57753) received client close

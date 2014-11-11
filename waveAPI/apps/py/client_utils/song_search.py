@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import __init__
 import cgi
 import cgitb; cgitb.enable()  # for troubleshooting
 from grooveshark import Client
@@ -31,8 +30,6 @@ foundSongs = client.search(info, type='Fast')
 returnData = []
 songCount = 0
 for song in foundSongs:
-    for field in song:
-        print field
     returnData.append({'song' : song['SongName'],
                        'artist' : song['ArtistName'],
                        'album' : song['AlbumName'],
