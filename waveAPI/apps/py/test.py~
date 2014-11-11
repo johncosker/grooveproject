@@ -14,7 +14,7 @@ print 'hi'
 factory = WebSocketServerFactory()
 factory.protocol = MyServerProtocol
 
-reactor.listenTCP(5506, factory)
+reactor.listenTCP(5506d, factory)
 reactor.run()
 
 

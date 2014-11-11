@@ -124,10 +124,9 @@ class MyServerProtocol(WebSocketServerProtocol):
         ## echo back message verbatim
         self.sendMessage(payload, isBinary)
 
-# __init__
-if __name__ == "__main__":
-    player_q = Queue()
-    startPlayerWorker(player_q)
+
+# Main process loop
+def main(player_q):
     try:
         factory = MyFactory(player_q)
         port = reactor.listenTCP(utils.get_port(), factory)
@@ -141,3 +140,9 @@ if __name__ == "__main__":
         reactor.run()
     except KeyboardInterrupt:
         print("Exiting")
+
+# __init__
+if __name__ == "__main__":
+    player_q = Queue()
+    startPlayerWorker(player_q)
+    main(player_q)

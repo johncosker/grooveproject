@@ -126,7 +126,8 @@ $(document).ready(function() {
 //  *********************  FUNCTIONS  *********************  //
 
 function startWebSockets() {
-    connection = new WebSocket('ws://localhost:55558/'); // TODO replace w/ server IP
+    console.log('starting socket')
+    connection = new WebSocket('ws://localhost:5506/'); // TODO replace w/ server IP
 
     // When the connection is open, send some data to the server
     connection.onopen = function () {
@@ -136,7 +137,8 @@ function startWebSockets() {
 
     // Log errors
     connection.onerror = function (error) {
-        console.log('WebSocket Error ' + error);
+        console.log('conn error ' + error)
+        //alert("Server error: Can not connect to server.")
     };
 
     // Log messages from the server
