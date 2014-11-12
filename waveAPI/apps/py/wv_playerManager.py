@@ -1,23 +1,21 @@
 #!/usr/bin/python
-from __future__ import print_function
 import utils
-
-import cgi
-import cgitb; cgitb.enable
-import os
-import time
-import itertools
 import vlc
 import logging
-import subprocess
-
 from time import sleep
-
-from multiprocessing import Process
+from multiprocessing import Queue, Process
 from grooveshark import Client
 from vlc_control import vlc_controller
 from groove_control import groove_controller
 from song_control import songs_controller
+
+def start_playerManager():
+    """Starts the player instance that recieves commands from Queue (player_q)"""
+    player_q = Queue()
+    worker = Process(target = playerManager, args = (player_q,))
+    worker.daemon = True
+    worker.start()
+    return player_q
 
 
 class playerManager(object):
@@ -28,27 +26,27 @@ class playerManager(object):
         self.vc = vlc_controller(self)
         self.sc = songs_controller(self)
 
-        logging.info("playerManager sarted")
+        logging.info('playerManager sarted')
 
         # Get next command
         while True:
             if queue.get:
                 recievedCmd = queue.get()
-                logging.info("raw cmd: %s" % (recievedCmd))
+                logging.info('raw cmd: %s' % (recievedCmd))
                 self.handleInput(recievedCmd['cmd'])
 
     def wait():
         sleep(15)
 
     def playPopular(self):
-        logging.info("starting to play pop list")
-        logging.info("Playing PopList")
+        logging.info('starting to play pop list')
+        logging.info('Playing PopList')
         for song in self.client.popular():
             self.vc.addSong(song)
         self.vc.play()
 
     def play(self):
-        logging.info("Player: play()")
+        logging.info('Player: play()')
         self.vc.play()
 
     def pauseToggle(self):
@@ -67,9 +65,9 @@ class playerManager(object):
 
     # Add a song to the database
     def add(self, string):
-        logging.info("STRING : " + string)
+        logging.info('STRING : ' + string)
         song = self.gc.getSong(string)
-        if not song == "Error":
+        if not song == 'Error':
             self.sc.addSong(song)
             if self.vc.count() == 0:
                 self.addNextSong()
@@ -82,7 +80,7 @@ class playerManager(object):
         self.vc.addSongRow(row)
 
     def handleInput(self, string):
-        print("Input: " + string)
+        print('Input: ' + string)
         if (string == 'skip'):
             self.skip()
         elif (string == 'print'):
