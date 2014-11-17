@@ -660,3 +660,25 @@ Wave Player - playerManager sarted
 Wave Player - playerManager sarted
 Wave Player - playerManager sarted
 Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - {u'info': u'', u'cmd': u'player', u'user': u'pause', u'target': u''}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u'', u'cmd': u'player', u'user': u'pause', u'target': u''}
+Wave Player - {u'info': u'', u'cmd': u'player', u'user': u'pause', u'target': u''}
+Wave Player - {u'info': u'', u'cmd': u'player', u'user': u'pause', u'target': u''}
+Wave Player - {u'info': u'', u'cmd': u'player', u'user': u'pause', u'target': u''}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target': u'player'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target': u'player'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target': u'player'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target': u'player'}
+Wave Player - playerManager sarted
+Wave Player - raw cmd: {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target': u'player'}
+Wave Player - STRING : player
