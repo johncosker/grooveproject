@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import utils
-import vlc
 import logging
 from time import sleep
 from multiprocessing import Queue, Process

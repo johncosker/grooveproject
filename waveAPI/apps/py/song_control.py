@@ -1,16 +1,11 @@
 #!/usr/bin/python
 import utils
-
 import sqlite3
-import json
-import sys
-import logging
 from grooveshark import Client
 
 
 class songs_controller:
-    # Initialize controller, maybe need to explore thread safety
-    def __init__(self, manager):
+    def __init__(self):
         self.con = sqlite3.connect(utils.getDBdir(), check_same_thread=False)
         self.con.text_factory = str
         self.con.row_factory = sqlite3.Row
@@ -19,8 +14,8 @@ class songs_controller:
             self.cur.execute("DROP TABLE IF EXISTS Songs")
             self.cur.execute("CREATE TABLE Songs(Name TEXT, Artist TEXT, Votes INT,  Url TEXT)")
 
-    # Add a song to the db, right now votes is only separate for testing, in the future all initial votes will be 0
     def addSong(self, song, artist, url):
+        """Add a song to the db, right now votes is only separate for testing, in the future all initial votes will be 0"""
         if not self.checkExists(song):
             songTuple = (song, artist, 1, url)
             self.cur.execute("INSERT INTO Songs VALUES(?,?,?,?)", songTuple)
@@ -33,9 +28,8 @@ class songs_controller:
         self.cur.execute("DELETE FROM Songs WHERE rowid=?", (rowid,))
         self.con.commit()
 
-
-    # Add a song with a know stream URL
     def addKnownSong(self, song):
+        """Add a song with a know stream URL"""
         if not self.checkExists(song['song']):
             songTuple = (song['song'], song['artist'], 1, song['stream'])
             self.cur.execute("INSERT INTO Songs VALUES(?,?,?,?)", songTuple)
@@ -65,8 +59,8 @@ class songs_controller:
             songs.append(song)
         return songs
 
-    # Gets the row with the highest vote count, if the highest is -1, reset all songs to 0
     def getHighest(self):
+        """Gets the row with the highest vote count, if the highest is -1, reset all songs to 0"""
         self.cur.execute("SELECT rowid, * FROM Songs WHERE Votes = (SELECT MAX(Votes) FROM Songs) LIMIT 1")
         row = self.cur.fetchone()
         if row['Votes'] == -1:
@@ -75,12 +69,12 @@ class songs_controller:
         self.con.commit()
         return row
 
-    # Resets all songs to 0 in case there are no new songs, this cauess the played songs to be playable again
     def resetList(self):
+    """Resets all songs to 0 in case there are no new songs, this cauess the played songs to be playable again"""
         self.cur.execute("UPDATE Songs SET Votes = 0")
 
-    # Check for duplicate song name
     def checkExists(self, song):
+    """Check for duplicate song name"""
         self.cur.execute("SELECT 1 FROM Songs WHERE Name = ?", (song,))
         if self.cur.fetchone():
             return 1

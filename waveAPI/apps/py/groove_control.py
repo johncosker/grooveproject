@@ -2,7 +2,8 @@
 import utils
 from grooveshark import Client
 import vlc
-import json
+
+
 class groove_controller:
     def __init__(self, manager):
         self.client = Client()
