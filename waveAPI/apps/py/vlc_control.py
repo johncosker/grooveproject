@@ -1,11 +1,9 @@
 #!/usr/bin/python
 import utils
 import vlc
-from grooveshark import Client
 
 
 class vlc_controller:
-
     def __init__(self, manager):
         vlc_args = [""]
         self.instance = vlc.libvlc_new(len(vlc_args),vlc_args)
