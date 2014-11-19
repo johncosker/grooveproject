@@ -682,3 +682,81 @@ Wave Player - {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target
 Wave Player - playerManager sarted
 Wave Player - raw cmd: {u'info': u'pause', u'cmd': u'player', u'user': u'admin', u'target': u'player'}
 Wave Player - STRING : player
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - raw cmd: {'cmd': 'player', 'target': 'player'}
+Wave Player - STRING : player
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'SongID': u'25289063', u'target': u'dataBase', u'song': u'Beverly Hills', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451077', u'target': u'dataBase', u'song': u'Hash Pipe', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27081532', u'target': u'dataBase', u'song': u"Say It Ain't So", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27081532', u'target': u'dataBase', u'song': u"Say It Ain't So", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451124', u'target': u'dataBase', u'song': u'Island in the Sun', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24447251', u'target': u'dataBase', u'song': u'Photograph', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27081532', u'target': u'dataBase', u'song': u"Say It Ain't So", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451077', u'target': u'dataBase', u'song': u'Hash Pipe', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - playerManager sarted
+Wave Player - {u'info': u"''", u'album': u'Weezer (Blue Album)', u'SongID': u'27081532', u'target': u'dataBase', u'song': u"Say It Ain't So", u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Weezer (Green Album)', u'SongID': u'24451077', u'target': u'dataBase', u'song': u'Hash Pipe', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Beverly Hills', u'SongID': u'25289063', u'target': u'dataBase', u'song': u'Beverly Hills', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'album': u'Pork and Beans', u'SongID': u'10233760', u'target': u'dataBase', u'song': u'Pork and Beans', u'cmd': u'addSongBySourceType', u'ArtistID': u'1625', u'user': u'admin', u'artist': u'Weezer'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - Player: play()
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'pause', u'user': u'admin', u'target': u'player'}
+Wave Player - raw cmd: {u'info': u"''", u'cmd': u'pause', u'user': u'admin', u'target': u'player'}
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - raw cmd: {'cmd': 'player', 'target': 'player'}
+Wave Player - STRING : player
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'play', u'user': u'admin', u'target': u'player'}
+Wave Player - {u'info': u"''", u'cmd': u'skip', u'user': u'admin', u'target': u'player'}
+Wave Player - playerManager sarted
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - raw cmd: {'cmd': 'player', 'target': 'player'}
+Wave Player - STRING : player
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - {'cmd': 'player', 'target': 'player'}
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted
+Wave Player - playerManager sarted

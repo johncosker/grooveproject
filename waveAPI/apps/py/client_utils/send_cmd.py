@@ -6,7 +6,7 @@ import socket
 import logging
 
 
-TCP_IP = "192.168.1.7"
+TCP_IP = "192.168.1.11"
 TCP_PORT = 5055
 BUFFER_SIZE = 1024
 

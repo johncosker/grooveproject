@@ -126,9 +126,9 @@ $(document).ready(function() {
 //  *********************  FUNCTIONS  *********************  //
 
 function startWebSockets() {
-    console.log('starting socket')
-    connection = new WebSocket('ws://localhost:5506/'); // TODO replace w/ server IP
-
+    console.log('start')
+    connection = new WebSocket('ws://localhost:5506/');
+    console.log('started')
     // When the connection is open, send some data to the server
     connection.onopen = function () {
         console.log('connection.onopen')
@@ -137,7 +137,6 @@ function startWebSockets() {
 
     // Log errors
     connection.onerror = function (error) {
-        derek = error
         console.log('conn error ' + error)
         //alert("Server error: Can not connect to server.")
     };
@@ -149,7 +148,8 @@ function startWebSockets() {
 }
 
 function processCommand(cmd, buttonId) {
-   $.ajax({
+    /*
+    $.ajax({
         type: 'POST',
         url: 'apps/py/client_utils/send_cmd.py',
         data: cmd,
@@ -160,6 +160,9 @@ function processCommand(cmd, buttonId) {
             alert(':(')
         }
     })
+    */
+    console.log('send cmd')
+    connection.send(cmd)
 }
 
 function enableDisableButton(button) {

@@ -11,24 +11,24 @@ class main_parser():
        time they reach this point."""
 
     def __init__(self, player_q):
-        self.response = {}
+        self.response = {'type': 'Message',
+                         'Message': 'Received'}
         self.player_q = player_q
 
     def _player(self):
+        """
         def player_player(self):
                 self.player_q.put(self.received_msg)
-                self.response['type'] = 'Message'
-                self.response['Message'] = 'Received'
 
         player_options = {'player' : player_player}
         cmd = self.received_msg['cmd']
         player_options[cmd](self)
+        """
+        self.player_q.put(self.received_msg)
 
     def _dataBase(self):
         def db_delete(self):
             self.song_controller.removeSongById(self.received_msg['info'])
-            self.response['type'] = 'Message'
-            self.response['Message'] = 'Received'
 
         def db_showdb(self):
             self.response['type'] = "json"
@@ -37,27 +37,20 @@ class main_parser():
             self.response['songs'] = songs
 
         def db_addSong(self):
-            self.song_controller.addKnownSong({'song': data['song'],
-                                               'artist': data['artist'],
-                                               'stream': data['stream']})
-            self.response['type'] = 'Message'
-            self.response['Message'] = 'Received'
+            self.song_controller.addKnownSong({'song': self.received_msg['song'],
+                                               'artist': self.received_msg['artist'],
+                                               'stream': self.received_msg['stream']})
 
         def db_addSongAndriod(self):
             self.song_controller.addKnownSong({'song': arr[0],
                                                'artist': arr[1],
                                                'stream': arr[2]})
-            self.response['type'] = 'Message'
-            self.response['Message'] = 'Received'
 
         def db_addSongBySourceType(self):
-            self.song_controller.addSongBySourceType(data)
-            self.response['type'] = 'Message'
-            self.response['Message'] = 'Received'
+            self.song_controller.addSongBySourceType(self.received_msg)
 
         def db_fetchdb(self):
-            self.response['type'] = 'Message'
-            self.response['Message'] = 'Received'
+            pass
 
         self.song_controller = songs_controller(1)
         dataBase_options = {'delete': db_delete,
@@ -66,8 +59,8 @@ class main_parser():
                             'addSongAndroid': db_addSongAndriod,
                             'addSongBySourceType': db_addSongBySourceType,
                             'fetchdb': db_fetchdb}
-        target = self.received_msg['target']
-        dataBase_options[target](self)
+        cmd = self.received_msg['cmd']
+        dataBase_options[cmd](self)
 
     def _search(self):
         def search_search(self):
@@ -77,8 +70,8 @@ class main_parser():
                 self.response['queryType'] = 'search'
 
         search_options = {'search': search_search}
-        target = self.received_msg['target']
-        search_options[target](self)
+        cmd = self.received_msg['cmd']
+        search_options[cmd](self)
 
     def parse_message(self, received_msg):
         """Main parser function"""
