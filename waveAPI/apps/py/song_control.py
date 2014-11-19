@@ -6,7 +6,7 @@ from grooveshark import Client
 
 class songs_controller:
     def __init__(self):
-        self.con = sqlite3.connect(utils.getDBdir(), check_same_thread=False)
+        self.con = sqlite3.connect(utils.getDBdir()['songs'], check_same_thread=False)
         self.con.text_factory = str
         self.con.row_factory = sqlite3.Row
         with self.con:
@@ -70,11 +70,11 @@ class songs_controller:
         return row
 
     def resetList(self):
-    """Resets all songs to 0 in case there are no new songs, this cauess the played songs to be playable again"""
+        """Resets all songs to 0 in case there are no new songs, this cauess the played songs to be playable again"""
         self.cur.execute("UPDATE Songs SET Votes = 0")
 
     def checkExists(self, song):
-    """Check for duplicate song name"""
+        """Check for duplicate song name"""
         self.cur.execute("SELECT 1 FROM Songs WHERE Name = ?", (song,))
         if self.cur.fetchone():
             return 1

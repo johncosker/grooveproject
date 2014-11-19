@@ -11,12 +11,17 @@ class tcp_CmdProtocol(Protocol):
     def connectionMade(self):
         pass
 
-    def dataReceived(self, data):
-        cmd_parse = main_parser(player_q)
-        response = cmd_parse.parse_message(json.loads(data))
-        print response
-        self.transport.write(json.dumps(response))
-        self.transport.write('\n')
+    def dataReceived(self, payload):
+        try:
+            cmd_parse = main_parser(player_q)
+            response = cmd_parse.parse_message(json.loads(payload))
+            self.transport.write(json.dumps(response))
+            self.transport.write('\n')
+            
+        except  Exception as exc:
+            self.transport.write(json.dumps({'error': True,
+                                             'errorStr': exc.args[0]}))
+            self.transport.write('\n')
 
     def write(self, string):
         self.transport.write(string)
@@ -33,54 +38,39 @@ class tcp_Factory(ServerFactory):
 
 
 class webSockect_CmdProtocol(WebSocketServerProtocol):
+    def onConnect(self, request):
+        pass
 
-    def connectionMade(self):
-        print(0)
-        #self.transport.write('hi')
-        #self.transport.write('\n')
-        #pass
+    def onOpen(self):
+        pass
 
-    def dataReceived(self, data):
-        print data
-        #cmd_parse = main_parser(player_q)
-        #response = cmd_parse.parse_message(json.loads(data))
-        #print response
-        #self.transport.write(json.dumps(response))
-        #self.transport.write('hi')
-        #self.transport.write('\n')
-        #self.sendMessage('HI')
+    def onMessage(self, payload, isBinary):
+        print payload
+        if payload == 'INIT_CONN':
+            self.sendMessage((json.dumps({'type': 'Message',
+                                          'Message': 'Received'})),
+                             False)
+            return
 
-    def write(self, string):
-        print(1)
-        self.transport.write(string)
+        #try:
+        cmd_parse = main_parser(player_q)
+        response = cmd_parse.parse_message(json.loads(payload))
+        self.sendMessage((json.dumps(response)), False)
+        '''
+        except  Exception as exc:
+            self.sendMessage((json.dumps({'error': True,
+                                          'errorStr': exc.args[0]})), 
+                             False)
+        '''
+    def onClose(self, wasClean, code, reason):
+        pass
 
-    def err(self, string):
-        print(2)
-        self.transport.write('Error thing')
-    """
-   print 'hi'
-   def onConnect(self, request):
-      print("Client connecting:")
 
-   def onOpen(self):
-      print("WebSocket connection open.")
-
-   def onMessage(self, payload, isBinary):
-      if isBinary:
-         print("Binary message received: bytes")
-      else:
-         print("Text message received")
-
-      ## echo back message verbatim
-      self.sendMessage(payload, isBinary)
-
-   def onClose(self, wasClean, code, reason):
-      print("WebSocket connection closed:")
-    """
 class webSockect_Factory(WebSocketServerFactory):
     protocol = webSockect_CmdProtocol
 
     def __init__(self, player_q):
+        WebSocketServerFactory.__init__(self)
         self.player_q = player_q
 
 

@@ -148,21 +148,8 @@ function startWebSockets() {
 }
 
 function processCommand(cmd, buttonId) {
-    /*
-    $.ajax({
-        type: 'POST',
-        url: 'apps/py/client_utils/send_cmd.py',
-        data: cmd,
-        success: function(data) {
-
-        },
-        error: function() {
-            alert(':(')
-        }
-    })
-    */
     console.log('send cmd')
-    connection.send(cmd)
+    connection.send(JSON.stringify(cmd))
 }
 
 function enableDisableButton(button) {

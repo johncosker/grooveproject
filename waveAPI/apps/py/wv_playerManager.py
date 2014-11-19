@@ -23,7 +23,7 @@ class playerManager(object):
         self.client.init()
         self.gc = groove_controller(self)
         self.vc = vlc_controller(self)
-        self.sc = songs_controller(self)
+        self.sc = songs_controller()
 
         logging.info('playerManager sarted')
 

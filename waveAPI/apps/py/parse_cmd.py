@@ -81,6 +81,8 @@ class main_parser():
         self.received_msg = received_msg
         print('dataReceived')
         logging.info(self.received_msg)
-        target = self.received_msg['target']
-        target_parse[target]()
+        
+        if target_parse in self.received_msg.keys():
+            target = self.received_msg['target']
+            target_parse[target]()
         return self.response

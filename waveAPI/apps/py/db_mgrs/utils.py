@@ -43,8 +43,7 @@ def getDBdir():
     if  DIR_DEVIDER == "LINUX":
         return str(baseDir + "grooveproject/waveAPI/db/songs.db")
     else:
-        return {'songs': str(baseDir + "grooveproject\\waveAPI\\db\\songs.db"),
-                'playlist': str(baseDir + "grooveproject\\waveAPI\\db\\playlist.db")}
+        return str(baseDir + "grooveproject\waveAPI\db\songs.db")
 
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
