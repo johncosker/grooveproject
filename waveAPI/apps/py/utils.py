@@ -41,7 +41,8 @@ def getDBdir():
         DIR_DEVIDER = "LINUX"
 
     if  DIR_DEVIDER == "LINUX":
-        return str(baseDir + "grooveproject/waveAPI/db/songs.db")
+        return {'songs': baseDir + "grooveproject/waveAPI/db/songs.db",
+                'playlist': baseDir + "grooveproject/waveAPI/db/playlist.db"}
     else:
         return {'songs': str(baseDir + "grooveproject\\waveAPI\\db\\songs.db"),
                 'playlist': str(baseDir + "grooveproject\\waveAPI\\db\\playlist.db")}

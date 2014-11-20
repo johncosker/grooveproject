@@ -17,7 +17,7 @@ class tcp_CmdProtocol(Protocol):
             response = cmd_parse.parse_message(json.loads(payload))
             self.transport.write(json.dumps(response))
             self.transport.write('\n')
-            
+
         except  Exception as exc:
             self.transport.write(json.dumps({'error': True,
                                              'errorStr': exc.args[0]}))
@@ -45,13 +45,11 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
         pass
 
     def onMessage(self, payload, isBinary):
-        print payload
         if payload == 'INIT_CONN':
             self.sendMessage((json.dumps({'type': 'Message',
                                           'Message': 'Received'})),
                              False)
             return
-
         #try:
         cmd_parse = main_parser(player_q)
         response = cmd_parse.parse_message(json.loads(payload))
@@ -59,7 +57,7 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
         '''
         except  Exception as exc:
             self.sendMessage((json.dumps({'error': True,
-                                          'errorStr': exc.args[0]})), 
+                                          'errorStr': exc.args[0]})),
                              False)
         '''
     def onClose(self, wasClean, code, reason):
@@ -72,6 +70,7 @@ class webSockect_Factory(WebSocketServerFactory):
     def __init__(self, player_q):
         WebSocketServerFactory.__init__(self)
         self.player_q = player_q
+
 
 
 # __init__

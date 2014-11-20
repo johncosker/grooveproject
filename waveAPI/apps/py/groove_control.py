@@ -36,11 +36,16 @@ class groove_controller:
             return art.next().songs
 
     def getManySongs(self, search ,n):
-        foundSongs = self.client.search(search)
+        foundSongs = self.client.search(search, type='Fast')
         returnData = []
         songCount = 0
-        while songCount < n:
-            song = foundSongs.next()
-            returnData.append({'song' : song.name, 'artist' : song.artist.name, 'album' : song.album.name, 'stream' : song.stream.url})
+        for song in foundSongs:
+            returnData.append({'song': song['SongName'],
+                               'artist': song['ArtistName'],
+                               'album': song['AlbumName'],
+                               'SongID': song['SongID'],
+                               'ArtistID': song['ArtistID']})
             songCount += 1
+            if songCount > 19:
+                break
         return returnData

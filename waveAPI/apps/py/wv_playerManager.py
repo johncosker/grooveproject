@@ -29,10 +29,16 @@ class playerManager(object):
 
         # Get next command
         while True:
+            logging.info('main loop')
             if queue.get:
-                recievedCmd = queue.get()
-                logging.info('raw cmd: %s' % (recievedCmd))
-                self.handleInput(recievedCmd['cmd'])
+                try:
+                    logging.info('got q')
+                    recievedCmd = queue.get()
+                    logging.info('after q get')
+                    logging.info('raw cmd: %s' % (recievedCmd))
+                    self.handleInput(recievedCmd['cmd'])
+                except  Exception as exc:
+                    logging.error(':(')
 
     def wait():
         sleep(15)

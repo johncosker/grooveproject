@@ -86,17 +86,13 @@ $(document).ready(function() {
     $('#searchButton').on('click', function() {
         $('#searchResultsTab').trigger('click')
         g_searchTable.fnClearTable()
-        $.ajax({
-            type: 'POST',
-            url: 'apps/py/client_utils/song_search.py',
-            data: {'cmd':    'search',
+        var cmd = {'cmd':    'search',
                    'user':   'admin',
                    'target': 'search',
-                   'info':   $('#searchInput').val()},
-            success: function(data) {
-                updateSearchResults(data)
-            }
-        })
+                   'info':   $('#searchInput').val()}
+        searchConn = new WebSocket('ws://localhost:5506/')
+        searchConn.onmessage = function (e) {updateSearchResults(e.data)}
+        searchConn.onopen = function(){searchConn.send(JSON.stringify(cmd))}
     })
 
     // Add selected song
@@ -127,28 +123,27 @@ $(document).ready(function() {
 
 function startWebSockets() {
     console.log('start')
-    connection = new WebSocket('ws://localhost:5506/');
+    connection = new WebSocket('ws://localhost:5506/')
     console.log('started')
     // When the connection is open, send some data to the server
     connection.onopen = function () {
         console.log('connection.onopen')
-        connection.send('Ping'); // Send the message 'Ping' to the server
-    };
+        connection.send('INIT_CONN') // Send the message 'Ping' to the server
+    }
 
     // Log errors
     connection.onerror = function (error) {
         console.log('conn error ' + error)
         //alert("Server error: Can not connect to server.")
-    };
+    }
 
     // Log messages from the server
     connection.onmessage = function (e) {
-        console.log('Server: ' + e.data);
-    };
+        console.log('Server: ' + e.data)
+    }
 }
 
 function processCommand(cmd, buttonId) {
-    console.log('send cmd')
     connection.send(JSON.stringify(cmd))
 }
 
@@ -162,14 +157,19 @@ function enableDisableButton(button) {
 }
 
 function updateSearchResults(entries) {
+    entries = JSON.parse(entries).songs
+derek = entries
+    console.log(entries)
+    console.log('derek')
     var EL = entries.length
     for (var x =0; x < EL; x++) {
         g_searchTable.fnAddData(['<buttontype="button" class="addSong btn btn-default" onClick="addSong(this)"' +
-                                     'SongID='+ entries[x].SongID +' ArtistID='+ entries[x].ArtistID +'>Add</button>',
+                                 'SongID='+ entries[x].SongID +' ArtistID='+ entries[x].ArtistID +'>Add</button>',
                                  '<div class="searchDiv song">' + entries[x].song + '</div>',
                                  '<div class="searchDiv artist">' + entries[x].artist + '</div>',
                                  '<div class="searchDiv album">' + entries[x].album + '</div>'])
     }
+    searchConn.close()
 }
 
 function updatePlayList(entries) {

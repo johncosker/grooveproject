@@ -16,14 +16,7 @@ class main_parser():
         self.player_q = player_q
 
     def _player(self):
-        """
-        def player_player(self):
-                self.player_q.put(self.received_msg)
-
-        player_options = {'player' : player_player}
-        cmd = self.received_msg['cmd']
-        player_options[cmd](self)
-        """
+        print 'q.put'
         self.player_q.put(self.received_msg)
 
     def _dataBase(self):
@@ -52,7 +45,7 @@ class main_parser():
         def db_fetchdb(self):
             pass
 
-        self.song_controller = songs_controller(1)
+        self.song_controller = songs_controller()
         dataBase_options = {'delete': db_delete,
                             'showdb': db_showdb,
                             'addSong': db_addSong,
@@ -66,7 +59,8 @@ class main_parser():
         def search_search(self):
                 gc = groove_controller(None)
                 self.response['type'] = 'json'
-                self.response['songs'] = gc.getManySongs(string, 20)
+                self.response['songs'] = gc.getManySongs(self.received_msg['info'],
+                                                         20)
                 self.response['queryType'] = 'search'
 
         search_options = {'search': search_search}
@@ -79,10 +73,11 @@ class main_parser():
                         'dataBase': self._dataBase,
                         'search':  self._search}
         self.received_msg = received_msg
-        print('dataReceived')
         logging.info(self.received_msg)
-        
-        if target_parse in self.received_msg.keys():
+
+        if self.received_msg['target'] in target_parse.keys():
             target = self.received_msg['target']
             target_parse[target]()
+        else:
+            print "FUCK THIS SHIT"
         return self.response
