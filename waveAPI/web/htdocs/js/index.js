@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    responsiveFormatting()
-    startWebSockets()
+    pageLoadFunctions()
+
     g_playTable = $('#playListTable').dataTable({
         "bFilter":   false,
         "bPaginate": false,
@@ -31,16 +31,16 @@ $(document).ready(function() {
                    'user':   'admin',
                    'target': 'player',
                    'info':   ''}
-        processCommand(cmd, this)
+        processCommand(cmd, this, foo)
     })
 
     // PLAY Popular
     $('#playPopular').on('click', function() {
-        var cmd = {'cmd'   : 'popular',
-                   'user'   : 'admin',
-                   'target' : 'player',
-                   'info'     : ''}
-        processCommand(cmd, this)
+        var cmd = {'cmd':    'popular',
+                   'user':   'admin',
+                   'target': 'player',
+                   'info':   ''}
+        processCommand(cmd, this, foo)
     })
 
     // PAUSE
@@ -49,7 +49,7 @@ $(document).ready(function() {
                    'user':   'admin',
                    'target': 'player',
                    'info':   ''}
-        processCommand(cmd, this)
+        processCommand(cmd, this, foo)
     })
 
     // SKIP
@@ -58,7 +58,7 @@ $(document).ready(function() {
                    'user':   'admin',
                    'target': 'player',
                    'info':   ''}
-        processCommand(cmd, this)
+        processCommand(cmd, this, foo)
     })
 
     // Standard user cmds
@@ -68,7 +68,7 @@ $(document).ready(function() {
                    'user':   'admin',
                    'target': 'player',
                    'info':   ''}
-        processCommand(cmd, this)
+        processCommand(cmd, this, foo)
     })
 
     // DOWN VOTE
@@ -77,8 +77,7 @@ $(document).ready(function() {
                    'user':   'admin',
                    'target': 'player',
                    'info':   ''}
-        alert (cmd['cmd'])
-        //processCommand(cmd, this)
+        processCommand(cmd, this, foo)
     })
 
     // Seach cmds
@@ -92,6 +91,7 @@ $(document).ready(function() {
                    'info':   $('#searchInput').val()}
         searchConn = new WebSocket('ws://localhost:5506/')
         searchConn.onmessage = function (e) {updateSearchResults(e.data)}
+        console.log(cmd)
         searchConn.onopen = function(){searchConn.send(JSON.stringify(cmd))}
     })
 
@@ -105,7 +105,7 @@ $(document).ready(function() {
                    'song':   $(row).find('.song').text(),
                    'album':  $(row).find('.album').text(),
                    'artist': $(row).find('.artist').text()}
-        processCommand(cmd, this)
+        processCommand(cmd, this, foo)
     })
 
     $('#searchInput').keydown(function(event) {
@@ -120,6 +120,13 @@ $(document).ready(function() {
 })
 
 //  *********************  FUNCTIONS  *********************  //
+function pageLoadFunctions() {
+    responsiveFormatting()
+    getPlaylistQ()
+}
+
+
+function foo() {}
 
 function startWebSockets() {
     console.log('start')
@@ -134,7 +141,6 @@ function startWebSockets() {
     // Log errors
     connection.onerror = function (error) {
         console.log('conn error ' + error)
-        //alert("Server error: Can not connect to server.")
     }
 
     // Log messages from the server
@@ -143,8 +149,43 @@ function startWebSockets() {
     }
 }
 
-function processCommand(cmd, buttonId) {
-    connection.send(JSON.stringify(cmd))
+function processCommand(cmd, buttonId, callback) {
+    var conn = new WebSocket('ws://localhost:5506/')
+    conn.onopen = function () {
+        console.log(cmd)
+        conn.send(JSON.stringify(cmd))
+    }
+    conn.onerror = function (error) {
+        console.log('conn error ' + error)
+    }
+    conn.onmessage = function (e) {
+        console.log('Server: ' + e.data)
+        callback(JSON.parse(e.data))
+    }
+    
+}
+
+//Get playlist queue
+function getPlaylistQ() {
+    processCommand({'cmd':    'showdb',
+                    'user':   'admin',
+                    'target': 'dataBase',
+                    'info':   ''},
+                   $(this).closest('tr'),
+                   populatePlaylist)     
+}
+
+function populatePlaylist(songs) {
+    songs = songs.songs
+    g_playTable.fnClearTable()
+    var EL = songs.length
+    for (var x = 0; x < EL; x++) {
+        g_playTable.fnAddData(['<div class="searchDiv song">' + songs[x].name + '</div>',
+                               '<div class="searchDiv artist">' + songs[x].artist + '</div>',
+                               '',
+                               '<div class="searchDiv album">' + songs[x].votes + '</div>'])
+    }
+     setTimeout(function() {getPlaylistQ()}, 30000)
 }
 
 function enableDisableButton(button) {
@@ -158,11 +199,9 @@ function enableDisableButton(button) {
 
 function updateSearchResults(entries) {
     entries = JSON.parse(entries).songs
-derek = entries
     console.log(entries)
-    console.log('derek')
     var EL = entries.length
-    for (var x =0; x < EL; x++) {
+    for (var x = 0; x < EL; x++) {
         g_searchTable.fnAddData(['<buttontype="button" class="addSong btn btn-default" onClick="addSong(this)"' +
                                  'SongID='+ entries[x].SongID +' ArtistID='+ entries[x].ArtistID +'>Add</button>',
                                  '<div class="searchDiv song">' + entries[x].song + '</div>',
@@ -187,7 +226,7 @@ function addSong(button_row) {
                'song':     $(row).find('.song').text(),
                'album':    $(row).find('.album').text(),
                'artist':   $(row).find('.artist').text()}
-    processCommand(cmd, this)
+    processCommand(cmd, this, foo)
 }
 
 function responsiveFormatting() {

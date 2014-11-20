@@ -24,6 +24,7 @@ class playerManager(object):
         self.gc = groove_controller(self)
         self.vc = vlc_controller(self)
         self.sc = songs_controller()
+        self.sc.clearSongsTable()
 
         logging.info('playerManager sarted')
 

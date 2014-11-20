@@ -300,6 +300,8 @@ class Client(object):
         +---------------------------------+---------------------------------+
         | :const:`Client.PLAYLISTS`       | Search for playlists            |
         +---------------------------------+---------------------------------+
+        | :const:`Fast`                   | Search for songs quickly        |
+-       +---------------------------------+---------------------------------+
         '''
         if type == 'Fast':
             type = self.SONGS
@@ -310,7 +312,7 @@ class Client(object):
                                          self.connection.header('getResultsFromSearch'))[1]['result']
 
         if fast:
-            return result#(Song.from_response(song, self.connection) for song in result)
+            return result
         elif type == self.SONGS:
             return (Song.from_response(song, self.connection) for song in result)
         elif type == self.ARTISTS:
@@ -319,6 +321,25 @@ class Client(object):
             return (self._parse_album(album) for album in result)
         elif type == self.PLAYLISTS:
             return (self._parse_playlist(playlist) for playlist in result)
+
+    def getStreamID(self, SongID, ArtistID):
+        """
+        :class:`Stream` object for playing
+        """
+        # Add song to queue
+        self.connection.request('addSongsToQueue',
+                                 {'songIDsArtistIDs': [{'artistID': ArtistID,
+                                                        'source': 'user',
+                                                        'songID': SongID,
+                                                        'songQueueSongID': 1}],
+                                  'songQueueID': self.connection.session.queue},
+                                 self.connection.header('addSongsToQueue', 'jsqueue'))
+
+
+        stream_info = self.connection.request('getStreamKeyFromSongIDEx', {'songID' : SongID, 'country' : self.connection.session.country,
+                                                                            'prefetch' : False, 'mobile' : False},
+                                               self.connection.header('getStreamKeyFromSongIDEx', 'jsqueue'))[1]
+        return Stream(stream_info['ip'], stream_info['streamKey'], self.connection).url
 
     def popular(self, period=DAILY):
         '''

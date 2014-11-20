@@ -11,6 +11,9 @@ class songs_controller:
         self.con.row_factory = sqlite3.Row
         with self.con:
             self.cur = self.con.cursor()
+
+    def clearSongsTable(self):
+
             self.cur.execute("DROP TABLE IF EXISTS Songs")
             self.cur.execute("CREATE TABLE Songs(Name TEXT, Artist TEXT, Votes INT,  Url TEXT)")
 
@@ -46,17 +49,16 @@ class songs_controller:
         self.addSong(rawData['song'], rawData['artist'], streamUrl)
 
     def toArray(self):
-        rowDict = {}
+        """Dumps Songs table"""
         self.cur.execute("SELECT rowid, Name, Artist, Votes FROM Songs")
         rows = self.cur.fetchall()
         songs = []
         for row in rows:
-            song = {}
-            song['name'] = row['Name']
-            song['artist'] = row['Artist']
-            song['rowid'] = row['rowid']
-            song['votes'] = row['Votes']
-            songs.append(song)
+            songs.append({'name': row['Name'],
+                          'artist': row['Artist'],
+                          'rowid': row['rowid'],
+                          'votes': row['Votes']
+                        })
         return songs
 
     def getHighest(self):
