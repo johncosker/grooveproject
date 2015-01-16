@@ -4,11 +4,14 @@ import json
 from wv_playerManager import start_playerManager
 from parse_cmd import main_parser
 from twisted.internet.protocol import ServerFactory, Protocol
-from twisted.internet import reactor, threads
+from twisted.internet import reactor, threads, ssl
 from autobahn.twisted.websocket import WebSocketServerProtocol, WebSocketServerFactory
+from dbMgr.usersMgr import userMgr
+useSSL = False
+
 
 class tcp_CmdProtocol(Protocol):
-    def connectionMade(self):
+    def connectionMade(self, payload):
         pass
 
     def dataReceived(self, payload):
@@ -45,14 +48,25 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
         pass
 
     def onMessage(self, payload, isBinary):
+        print 'onMEssage'
         if payload == 'INIT_CONN':
             self.sendMessage((json.dumps({'type': 'Message',
                                           'Message': 'Received'})),
                              False)
             return
-        #try:
+        #try:webSockect_Factory
+        print "hi"
+        payload = json.loads(payload)
+        print payload['user']
+        auth = userMgr(payload['user'])
+        if not auth.checkUser():
+            self.sendMessage((json.dumps({'type': 'Message',
+                                          'Message': 'Received'})),
+                             False)
+            return
+
         cmd_parse = main_parser(player_q)
-        response = cmd_parse.parse_message(json.loads(payload))
+        response = cmd_parse.parse_message(payload)
         self.sendMessage((json.dumps(response)), False)
         '''
         except  Exception as exc:
@@ -72,17 +86,25 @@ class webSockect_Factory(WebSocketServerFactory):
         self.player_q = player_q
 
 
-
 # __init__
 if __name__ == '__main__':
     player_q = start_playerManager()
-
     factory = tcp_Factory(player_q)
-    port = reactor.listenTCP(utils.get_port(), factory)
+
+    if useSSL:
+        contextFactory = ssl.DefaultOpenSSLContextFactory(utils.keyDir + '/server.key',
+                                                          utils.keyDir + '/server.crt')
+        port = reactor.listenSSL(5505, factory, contextFactory)
+    else:
+        port = reactor.listenTCP(5505, factory)
     print('TCP Port %s.' % (port.getHost()))
 
     factory = webSockect_Factory(player_q)
-    port = reactor.listenTCP(5506, factory)
-    print('WebSocket Port %s.' % (port.getHost()))
 
+    if useSSL:
+        port = reactor.listenSSL(5506, factory, contextFactory)
+    else:
+        port = reactor.listenTCP(5506, factory)
+
+    print('WebSocket Port %s.' % (port.getHost()))
     reactor.run()

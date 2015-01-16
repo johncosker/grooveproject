@@ -1,6 +1,57 @@
 #!/usr/bin/python
 import utils
 import sqlite3
+import base64
+import uuid
+import time
+
+debug = False
+
+class userMgr:
+    """Handles / auths all users"""
+    def __init__(self, user):
+        self.username, self.password, self.uid = base64.decodestring(user).split(':')
+        self.con = sqlite3.connect(utils.dbDir + 'users.db',
+                                   check_same_thread=False)
+        self.con.text_factory = str
+        self.con.row_factory = sqlite3.Row
+        with self.con:
+            self.cur = self.con.cursor()
+
+        self.cur.execute("CREATE TABLE IF NOT EXISTS users (name TEXT, pass TEXT, uid TEXT)")
+
+    def checkUser(self):
+        """Auth User"""
+        print 'checkUser'
+        print self.username
+        print self.password
+        print self.uid
+        if debug:
+            return True
+        else:
+            if self.uid == 'NULL':
+                return self.createUser()
+            else:
+                self.cur.execute("SELECT * FROM users WHERE uid = (?)", (self.uid,))
+                row = self.cur.fetchone()
+                if row == None:
+                    return False
+                if self.username == row[0] and self.password == row[1]:
+                    return True
+                else:
+                    return False
+
+    def createUser(self):
+        """Create a new user"""
+        uid = str(uuid.uuid3(uuid.NAMESPACE_DNS, self.username + str(time.time() )))
+        print uid
+        self.cur.execute("INSERT INTO users VALUES(?,?,?)", (self.username, self.password, uid))
+        self.con.commit()
+        return True
+
+
+# please ignore v
+
 from grooveshark import Client
 
 

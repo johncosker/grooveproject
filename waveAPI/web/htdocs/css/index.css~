@@ -1,8 +1,0 @@
-.spacer {
-    margin-top: 15px;
-}
-
-.li_searchBox {
-    margin-top: 8px;
-    max-width: 900px;
-}

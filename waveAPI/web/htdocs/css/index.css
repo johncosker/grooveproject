@@ -1,3 +1,12 @@
+body {
+    background-color: #3B3B3B;
+}
+
+.dataContainer {
+    background-color: white;
+    padding-top: 15px;
+}
+
 .spacer {
     margin-top: 15px;
 }

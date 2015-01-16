@@ -9,20 +9,13 @@ currentDir = os.path.dirname(os.path.realpath(__file__))
 baseDir = currentDir[0:currentDir.find('grooveproject')]
 DIR_DEVIDER = "PC"
 
-if "/grooveproject/" in currentDir:
-    DIR_DEVIDER = "LINUX"
 
-# Add 3rdparty moduals to sys path
-if DIR_DEVIDER == "LINUX":
-    partyDir = baseDir + "grooveproject/waveAPI/apps/3rdParty"
-    logDir = baseDir + "grooveproject/log/python.log"
-    pidDir = baseDir + "grooveproject/waveAPI/apps/config/wv_interfaceInformer.pid"
-    mainDir = baseDir + "grooveproject/waveAPI/apps/py/"
-else:
-    partyDir = baseDir + "grooveproject\\waveAPI\\apps\\3rdParty"
-    logDir = baseDir + "grooveproject\\log\\python.log"
-    pidDir = baseDir + "grooveproject\\waveAPI\\apps\\config\\wv_interfaceInformer.pid"
-    mainDir = baseDir + "grooveproject\\waveAPI\\apps\\py\\"
+partyDir = baseDir + "grooveproject/waveAPI/apps/3rdParty"
+logDir = baseDir + "grooveproject/log/python.log"
+pidDir = baseDir + "grooveproject/waveAPI/apps/config/wv_interfaceInformer.pid"
+mainDir = baseDir + "grooveproject/waveAPI/apps/py/"
+dbDir = baseDir + "grooveproject/waveAPI/db/"
+keyDir = baseDir + "grooveproject/waveAPI/apps/config/keys"
 
 sys.path.insert(0, partyDir)
 sys.path.insert(0, mainDir)
@@ -31,21 +24,6 @@ sys.path.insert(0, mainDir)
 logging.basicConfig(filename=logDir,
                     format='Wave Player - %(message)s',
                     level=logging.DEBUG)
-
-def getDBdir():
-    currentDir = os.path.dirname(os.path.realpath(__file__))
-    baseDir = currentDir[0:currentDir.find('grooveproject')]
-    DIR_DEVIDER = "PC"
-
-    if "/grooveproject/" in currentDir:
-        DIR_DEVIDER = "LINUX"
-
-    if  DIR_DEVIDER == "LINUX":
-        return {'songs': baseDir + "grooveproject/waveAPI/db/songs.db",
-                'playlist': baseDir + "grooveproject/waveAPI/db/playlist.db"}
-    else:
-        return {'songs': str(baseDir + "grooveproject\\waveAPI\\db\\songs.db"),
-                'playlist': str(baseDir + "grooveproject\\waveAPI\\db\\playlist.db")}
 
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    pageLoadFunctions()
-
     g_playTable = $('#playListTable').dataTable({
         "bFilter":   false,
         "bPaginate": false,
@@ -24,11 +22,17 @@ $(document).ready(function() {
                       { "bSortable": true },
                       { "bSortable": true }]
     })
+    pageLoadFunctions()
 
-    // PLAY
+    // playListTab
+    $('#playListTab').on('click', function() {
+        g_playTable.fnClearTable()
+        getPlaylistQ()
+    })
+
     $('#play').on('click', function() {
         var cmd = {'cmd':    'play',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'player',
                    'info':   ''}
         processCommand(cmd, this, foo)
@@ -37,7 +41,7 @@ $(document).ready(function() {
     // PLAY Popular
     $('#playPopular').on('click', function() {
         var cmd = {'cmd':    'popular',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'player',
                    'info':   ''}
         processCommand(cmd, this, foo)
@@ -46,7 +50,7 @@ $(document).ready(function() {
     // PAUSE
     $('#pause').on('click', function() {
         var cmd = {'cmd':    'pause',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'player',
                    'info':   ''}
         processCommand(cmd, this, foo)
@@ -55,7 +59,7 @@ $(document).ready(function() {
     // SKIP
     $('#skip').on('click', function() {
         var cmd = {'cmd':    'skip',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'player',
                    'info':   ''}
         processCommand(cmd, this, foo)
@@ -63,18 +67,18 @@ $(document).ready(function() {
 
     // Standard user cmds
     // UP VOTE
-    $('#upSong').on('click', function() {
+    $('.upvote').on('click', function() {
         var cmd = {'cmd':    'upSong',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'player',
                    'info':   ''}
         processCommand(cmd, this, foo)
     })
 
     // DOWN VOTE
-    $('#downSong').on('click', function() {
+    $('.downvote').on('click', function() {
         var cmd = {'cmd':    'downSong',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'player',
                    'info':   ''}
         processCommand(cmd, this, foo)
@@ -86,12 +90,11 @@ $(document).ready(function() {
         $('#searchResultsTab').trigger('click')
         g_searchTable.fnClearTable()
         var cmd = {'cmd':    'search',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'search',
                    'info':   $('#searchInput').val()}
-        searchConn = new WebSocket('ws://localhost:5506/')
+        var searchConn = new WebSocket(g_wsproto)
         searchConn.onmessage = function (e) {updateSearchResults(e.data)}
-        console.log(cmd)
         searchConn.onopen = function(){searchConn.send(JSON.stringify(cmd))}
     })
 
@@ -99,7 +102,7 @@ $(document).ready(function() {
     $('.addSong').on('click', function() {
         var row = $(this).closest('tr')
         var cmd = {'cmd':    'addSong',
-                   'user':   'admin',
+                   'user':   getUser(),
                    'target': 'dataBase',
                    'info':   '',
                    'song':   $(row).find('.song').text(),
@@ -122,19 +125,26 @@ $(document).ready(function() {
 //  *********************  FUNCTIONS  *********************  //
 function pageLoadFunctions() {
     responsiveFormatting()
+    if (window.location.protocol === "https:") {
+        g_wsproto = "wss://localhost:5506/"
+    } else {
+        g_wsproto = "ws://localhost:5506/"
+    }
+    login()
     getPlaylistQ()
+}
+
+function login() {
+    $('#loginDialog').modal('show')
 }
 
 
 function foo() {}
 
 function startWebSockets() {
-    console.log('start')
-    connection = new WebSocket('ws://localhost:5506/')
-    console.log('started')
+    connection = new WebSocket(g_wsproto)
     // When the connection is open, send some data to the server
     connection.onopen = function () {
-        console.log('connection.onopen')
         connection.send('INIT_CONN') // Send the message 'Ping' to the server
     }
 
@@ -150,7 +160,7 @@ function startWebSockets() {
 }
 
 function processCommand(cmd, buttonId, callback) {
-    var conn = new WebSocket('ws://localhost:5506/')
+    var conn = new WebSocket(g_wsproto)
     conn.onopen = function () {
         console.log(cmd)
         conn.send(JSON.stringify(cmd))
@@ -162,17 +172,23 @@ function processCommand(cmd, buttonId, callback) {
         console.log('Server: ' + e.data)
         callback(JSON.parse(e.data))
     }
-    
+}
+
+g_user = 'derek'
+g_pass = '1'
+g_uid = 'cea251a4-ee22-354c-b419-0bd1f9a3794e'
+function getUser() {
+    return btoa(g_user + ':' + g_pass + ':' + g_uid)
 }
 
 //Get playlist queue
 function getPlaylistQ() {
     processCommand({'cmd':    'showdb',
-                    'user':   'admin',
+                    'user':   getUser(),
                     'target': 'dataBase',
                     'info':   ''},
                    $(this).closest('tr'),
-                   populatePlaylist)     
+                   populatePlaylist)
 }
 
 function populatePlaylist(songs) {
@@ -180,10 +196,14 @@ function populatePlaylist(songs) {
     g_playTable.fnClearTable()
     var EL = songs.length
     for (var x = 0; x < EL; x++) {
-        g_playTable.fnAddData(['<div class="searchDiv song">' + songs[x].name + '</div>',
-                               '<div class="searchDiv artist">' + songs[x].artist + '</div>',
-                               '',
-                               '<div class="searchDiv album">' + songs[x].votes + '</div>'])
+        g_playTable.fnAddData([
+          '<div class="searchDiv posision">' + songs[x].rowid + '</div>',
+          '<div class="searchDiv song">' + songs[x].name + '</div>',
+          '<div class="searchDiv artist">' + songs[x].artist + '</div>',
+          '<div class="searchDiv album">' + songs[x].votes +
+            '<span class="glyphicon glyphicon glyphicon-hand-down upvote" aria-hidden="true"></span>' +
+            '<span class="glyphicon glyphicon glyphicon-hand-up downvote" aria-hidden="true"></span>' +
+         '</div>'])
     }
      setTimeout(function() {getPlaylistQ()}, 30000)
 }
@@ -202,11 +222,12 @@ function updateSearchResults(entries) {
     console.log(entries)
     var EL = entries.length
     for (var x = 0; x < EL; x++) {
-        g_searchTable.fnAddData(['<buttontype="button" class="addSong btn btn-default" onClick="addSong(this)"' +
-                                 'SongID='+ entries[x].SongID +' ArtistID='+ entries[x].ArtistID +'>Add</button>',
-                                 '<div class="searchDiv song">' + entries[x].song + '</div>',
-                                 '<div class="searchDiv artist">' + entries[x].artist + '</div>',
-                                 '<div class="searchDiv album">' + entries[x].album + '</div>'])
+        g_searchTable.fnAddData([
+          '<buttontype="button" class="addSong btn btn-default" onClick="addSong(this)"' +
+             'SongID='+ entries[x].SongID +' ArtistID='+ entries[x].ArtistID +'>Add</button>',
+           '<div class="searchDiv song">' + entries[x].song + '</div>',
+           '<div class="searchDiv artist">' + entries[x].artist + '</div>',
+           '<div class="searchDiv album">' + entries[x].album + '</div>'])
     }
     searchConn.close()
 }
@@ -218,7 +239,7 @@ function updatePlayList(entries) {
 function addSong(button_row) {
     var row = $(button_row).closest('tr')
     var cmd = {'cmd':      'addSongBySourceType',
-               'user':     'admin',
+               'user':     getUser(),
                'target':   'dataBase',
                'info':     '',
                'SongID':   $(button_row).attr('SongId'),
@@ -230,6 +251,11 @@ function addSong(button_row) {
 }
 
 function responsiveFormatting() {
-    var width = $('#mainNavContainer').width()
-    $('.li_searchBox').width(width - 225)
+    $('.li_searchBox').width($('#mainNavContainer').width() - 225)
+
+    var newHeight = $('body').height() + 50
+    $('#mainContainer').height(newHeight)
+    $('#searchResults').height(newHeight)
+    $('#settings').height(newHeight)
+    $('.dataTables_scrollBody').height(newHeight)
 }
