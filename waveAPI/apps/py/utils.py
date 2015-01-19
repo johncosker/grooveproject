@@ -6,16 +6,17 @@ from time import sleep
 import logging
 
 currentDir = os.path.dirname(os.path.realpath(__file__))
-baseDir = currentDir[0:currentDir.find('grooveproject')]
+baseDir = currentDir[0:currentDir.find('grooveproject')] + 'grooveproject/'
 DIR_DEVIDER = "PC"
 
 
-partyDir = baseDir + "grooveproject/waveAPI/apps/3rdParty"
-logDir = baseDir + "grooveproject/log/python.log"
-pidDir = baseDir + "grooveproject/waveAPI/apps/config/wv_interfaceInformer.pid"
-mainDir = baseDir + "grooveproject/waveAPI/apps/py/"
-dbDir = baseDir + "grooveproject/waveAPI/db/"
-keyDir = baseDir + "grooveproject/waveAPI/apps/config/keys"
+partyDir = baseDir + "waveAPI/apps/3rdParty"
+logDir = baseDir + "log/python.log"
+pidDir = baseDir + "waveAPI/apps/config/wv_interfaceInformer.pid"
+mainDir = baseDir + "waveAPI/apps/py/"
+dbDir = baseDir + "waveAPI/db/"
+keyDir = baseDir + "waveAPI/apps/config/keys/"
+webDir = baseDir + "waveAPI/web/"
 
 sys.path.insert(0, partyDir)
 sys.path.insert(0, mainDir)

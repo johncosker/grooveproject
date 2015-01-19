@@ -3,6 +3,9 @@ import utils
 import json
 from wv_playerManager import start_playerManager
 from parse_cmd import main_parser
+from twisted.web.server import Site
+from twisted.web.static import File
+from twisted.web.resource import Resource
 from twisted.internet.protocol import ServerFactory, Protocol
 from twisted.internet import reactor, threads, ssl
 from autobahn.twisted.websocket import WebSocketServerProtocol, WebSocketServerFactory
@@ -54,8 +57,7 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
                                           'Message': 'Received'})),
                              False)
             return
-        #try:webSockect_Factory
-        print "hi"
+
         payload = json.loads(payload)
         print payload['user']
         auth = userMgr(payload['user'])
@@ -88,16 +90,30 @@ class webSockect_Factory(WebSocketServerFactory):
 
 # __init__
 if __name__ == '__main__':
+    # Website hosting
+    print utils.webDir + 'veiws'
+    root = Resource()
+    root.putChild('WavePortal', File(utils.webDir + 'views/'))
+    root.putChild('3rd_party', File(utils.webDir + '3rd_party'))
+    root.putChild('htdocs', File(utils.webDir + 'htdocs'))
+    #resource = File(utils.webDir + 'views/index.html')
+    port = reactor.listenTCP(80, Site(root))
+    print('Web Hosting Port: %s.' % (port.getHost()))
+
+
+
+    """
+    # CMD listener factorys
     player_q = start_playerManager()
     factory = tcp_Factory(player_q)
 
     if useSSL:
-        contextFactory = ssl.DefaultOpenSSLContextFactory(utils.keyDir + '/server.key',
-                                                          utils.keyDir + '/server.crt')
+        contextFactory = ssl.DefaultOpenSSLContextFactory(utils.keyDir + 'server.key',
+                                                          utils.keyDir + 'server.crt')
         port = reactor.listenSSL(5505, factory, contextFactory)
     else:
         port = reactor.listenTCP(5505, factory)
-    print('TCP Port %s.' % (port.getHost()))
+    print('TCP Port:         %s.' % (port.getHost()))
 
     factory = webSockect_Factory(player_q)
 
@@ -106,5 +122,6 @@ if __name__ == '__main__':
     else:
         port = reactor.listenTCP(5506, factory)
 
-    print('WebSocket Port %s.' % (port.getHost()))
+    print('WebSocket Port:   %s.' % (port.getHost()))
+    """
     reactor.run()
