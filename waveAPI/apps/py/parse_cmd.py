@@ -3,6 +3,7 @@ import utils
 import logging
 from song_control import songs_controller
 from groove_control import groove_controller
+from wv_playerManager import playerManager
 
 
 class main_parser():
@@ -10,14 +11,30 @@ class main_parser():
        payload.  This class assumes that all messages have been standarised by
        time they reach this point."""
 
-    def __init__(self, player_q):
+    def __init__(self):
+        logging.info("Made Parser")
         self.response = {'type': 'Message',
                          'Message': 'Received'}
-        self.player_q = player_q
+        self.player = playerManager()
 
     def _player(self):
-        print 'q.put'
-        self.player_q.put(self.received_msg)
+        def player_play(self):
+            self.player.play()
+        def player_pause(self):
+            self.player.pause()
+        def player_skip(self):
+            self.player.skip()
+        def player_current(self):
+            self.response['type'] = 'json'
+            self.response['song'] = self.player.currentSong()
+            self.response['queryType'] = 'search'
+
+        player_options = {'play': player_play,
+                            'skip': player_skip,
+                            'pause': player_pause,
+                            'current': player_current}
+        cmd = self.received_msg['cmd']
+        player_options[cmd](self)
 
     def _dataBase(self):
         def db_delete(self):
@@ -79,5 +96,5 @@ class main_parser():
             target = self.received_msg['target']
             target_parse[target]()
         else:
-            print "FUCK THIS SHIT"
+            print "FUCK THIS SHIT %s" % self.received_msg['target']
         return self.response

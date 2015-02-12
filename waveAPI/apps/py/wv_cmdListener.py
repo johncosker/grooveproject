@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import utils
 import json
-from wv_playerManager import start_playerManager
+from wv_playerManager import playerManager
 from parse_cmd import main_parser
 from twisted.web.server import Site
 from twisted.web.static import File
@@ -9,22 +9,21 @@ from twisted.web.resource import Resource
 from twisted.internet.protocol import ServerFactory, Protocol
 from twisted.internet import reactor, threads, ssl
 from autobahn.twisted.websocket import WebSocketServerProtocol, WebSocketServerFactory
+import logging
 from dbMgr.usersMgr import userMgr
 useSSL = False
 
 
 class tcp_CmdProtocol(Protocol):
-    def connectionMade(self, payload):
-        pass
-
     def dataReceived(self, payload):
         try:
-            cmd_parse = main_parser(player_q)
-            response = cmd_parse.parse_message(json.loads(payload))
+            response = parser.parse_message(json.loads(payload))
             self.transport.write(json.dumps(response))
             self.transport.write('\n')
 
-        except  Exception as exc:
+        except Exception as exc:
+            print str(exc)
+            logging.info(str(exc))
             self.transport.write(json.dumps({'error': True,
                                              'errorStr': exc.args[0]}))
             self.transport.write('\n')
@@ -39,9 +38,8 @@ class tcp_CmdProtocol(Protocol):
 class tcp_Factory(ServerFactory):
     protocol = tcp_CmdProtocol
 
-    def __init__(self, player_q):
-        self.player_q = player_q
-
+    def __init__(self, parser):
+        self.parser= parser
 
 class webSockect_CmdProtocol(WebSocketServerProtocol):
     def onConnect(self, request):
@@ -60,15 +58,15 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
 
         payload = json.loads(payload)
         print payload['user']
-        auth = userMgr(payload['user'])
+        auth = userMgr(payload)
         if not auth.checkUser():
             self.sendMessage((json.dumps({'type': 'Message',
                                           'Message': 'Received'})),
                              False)
             return
 
-        cmd_parse = main_parser(player_q)
-        response = cmd_parse.parse_message(payload)
+        cmd_parse = main_parser()
+        response = parser.parse_message(payload)
         self.sendMessage((json.dumps(response)), False)
         '''
         except  Exception as exc:
@@ -83,10 +81,9 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
 class webSockect_Factory(WebSocketServerFactory):
     protocol = webSockect_CmdProtocol
 
-    def __init__(self, player_q):
+    def __init__(self, parser):
         WebSocketServerFactory.__init__(self)
-        self.player_q = player_q
-
+        self.parser= parser
 
 # __init__
 if __name__ == '__main__':
@@ -102,10 +99,9 @@ if __name__ == '__main__':
 
 
 
-    """
     # CMD listener factorys
-    player_q = start_playerManager()
-    factory = tcp_Factory(player_q)
+    parser = main_parser()
+    factory = tcp_Factory(parser)
 
     if useSSL:
         contextFactory = ssl.DefaultOpenSSLContextFactory(utils.keyDir + 'server.key',
@@ -115,7 +111,7 @@ if __name__ == '__main__':
         port = reactor.listenTCP(5505, factory)
     print('TCP Port:         %s.' % (port.getHost()))
 
-    factory = webSockect_Factory(player_q)
+    factory = webSockect_Factory(parser)
 
     if useSSL:
         port = reactor.listenSSL(5506, factory, contextFactory)
@@ -123,5 +119,4 @@ if __name__ == '__main__':
         port = reactor.listenTCP(5506, factory)
 
     print('WebSocket Port:   %s.' % (port.getHost()))
-    """
     reactor.run()

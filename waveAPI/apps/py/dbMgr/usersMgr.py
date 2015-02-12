@@ -5,7 +5,7 @@ import base64
 import uuid
 import time
 
-debug = False
+debug = True
 
 class userMgr:
     """Handles / auths all users"""
