@@ -44,7 +44,7 @@ class songs_controller:
             self.cur.execute("UPDATE Songs SET Votes = Votes + 1 WHERE Name = ?",
                              (song['song'],))
         self.con.commit()
-        print '\033[92m{} - {}\033[0m'.format(song['song'], song['artist'])
+        print('\033[92m{} - {}\033[0m'.format(song['song'], song['artist']))
 
     def addSongBySourceType(self, rawData):
         """Add song that does not yet have a stream url"""

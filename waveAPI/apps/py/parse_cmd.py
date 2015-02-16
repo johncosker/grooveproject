@@ -96,5 +96,5 @@ class main_parser():
             target = self.received_msg['target']
             target_parse[target]()
         else:
-            print "FUCK THIS SHIT %s" % self.received_msg['target']
+            print("FUCK THIS SHIT %s" % self.received_msg['target'])
         return self.response

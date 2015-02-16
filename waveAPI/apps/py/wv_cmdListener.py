@@ -22,7 +22,7 @@ class tcp_CmdProtocol(Protocol):
             self.transport.write('\n')
 
         except Exception as exc:
-            print str(exc)
+            print(str(exc))
             logging.info(str(exc))
             self.transport.write(json.dumps({'error': True,
                                              'errorStr': exc.args[0]}))
@@ -49,7 +49,7 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
         pass
 
     def onMessage(self, payload, isBinary):
-        print 'onMEssage'
+        print('onMEssage')
         if payload == 'INIT_CONN':
             self.sendMessage((json.dumps({'type': 'Message',
                                           'Message': 'Received'})),
@@ -57,7 +57,7 @@ class webSockect_CmdProtocol(WebSocketServerProtocol):
             return
 
         payload = json.loads(payload)
-        print payload['user']
+        print(payload['user'])
         auth = userMgr(payload)
         if not auth.checkUser():
             self.sendMessage((json.dumps({'type': 'Message',
@@ -88,7 +88,7 @@ class webSockect_Factory(WebSocketServerFactory):
 # __init__
 if __name__ == '__main__':
     # Website hosting
-    print utils.webDir + 'veiws'
+    print(utils.webDir + 'veiws')
     root = Resource()
     root.putChild('WavePortal', File(utils.webDir + 'views/'))
     root.putChild('3rd_party', File(utils.webDir + '3rd_party'))
